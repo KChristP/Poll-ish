@@ -12,7 +12,7 @@ Group/Ungroup Questions
 
 ##Design Docs
 
-/wireframes
+[wireframes](./wireframes)
 component-heirarchy.md
 sample-state.md
 redux-structure.md
