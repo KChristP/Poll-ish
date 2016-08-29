@@ -13,11 +13,11 @@ Group/Ungroup Questions
 ##Design Docs
 
 [wireframes](./wireframes)
-component-heirarchy.md
-sample-state.md
-redux-structure.md
-schema.md
-api-endpoints.md
+[component hierarchy](./component-heirarchy.md)
+[sample state](sample-state.md)
+[redux structure](redux-structure.md)
+[schema](schema.md)
+[api endpoints](api-endpoints.md)
 
 ##Implementation Timeline
 
