@@ -2,7 +2,7 @@
 
 ##Components
 
-- <HomeContainer\>
+- \<HomeContainer\>
   - \<Header\>
     - \<SplashView\> (when logged out)
       - \<AuthForm\> (when logged out)
