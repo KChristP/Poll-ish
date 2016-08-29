@@ -13,12 +13,12 @@ Pol-ish is a poll hosting site inspired by Poll Everywhere built using Ruby on R
 
 ##Design Docs
 
-- [wireframes](./wireframes)
-- [component hierarchy](./component-heirarchy.md)
-- [sample state](sample-state.md)
-- [redux structure](redux-structure.md)
-- [schema](schema.md)
-- [api endpoints](api-endpoints.md)
+- [wireframes](./docs/wireframes)
+- [component hierarchy](./docs/component-heirarchy.md)
+- [sample state](./docs/sample-state.md)
+- [redux structure](./docs/redux-structure.md)
+- [schema](./docs/schema.md)
+- [api endpoints](./docs/api-endpoints.md)
 
 ##Implementation Timeline
 
