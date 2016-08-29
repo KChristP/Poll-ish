@@ -2,7 +2,7 @@
 
 ##Components
 
-###<HomeContainer\>
+- <HomeContainer\>
   - \<Header\>
     - \<SplashView\> (when logged out)
       - \<AuthForm\> (when logged out)
@@ -25,7 +25,7 @@
       - \<CreatePollForm\>
         - \<PollDetailGraphic\>
 
-###\<PollResponse\> (no login required)
+- \<PollResponse\> (no login required)
   - \<Header\>
   - \<PollResponseForm\>
 
