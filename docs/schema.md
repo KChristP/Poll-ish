@@ -9,16 +9,20 @@
 ##Groups
 - id (integer, primary key, not_null, unique)
 - name (string, not null)
-- user_id
+<!-- - user_id -->
+
+<!-- ##User_Groups
+user_id
+group_id -->
 
 ##Polls
 - id (integer, primary key, not null, unique)
 - group_id (integer, foreign key, find a way to default to a users' "ungrouped" group?, also need to ensure these are deleted when a group is deleted)
 - live (boolean, default: false)
 
-##Questions
+##Question
 - id (integer, primary key, not_null, unique)
-- question (string, not null)
+- body (string, not null)
 - poll_id (integer, foreign key, not_null, make sure these delete when polls are deleted)
 
 
