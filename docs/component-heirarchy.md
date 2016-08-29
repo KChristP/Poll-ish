@@ -25,7 +25,7 @@
       - \<CreatePollForm\>
         - \<PollDetailGraphic\>
 
-- \<PollResponse\> (no login required)
+- \<PollResponse\>
   - \<Header\>
   - \<PollResponseForm\>
 
