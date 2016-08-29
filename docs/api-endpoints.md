@@ -11,7 +11,6 @@
 
 - POST /api/session
 - DELETE /api/session
-- GET /api/session
 
 ##Polls
 

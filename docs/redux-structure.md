@@ -27,6 +27,17 @@
   - invoked from API callback
   - SessionReducer removes current user from the state
 
+  ##Error Cycles
+
+  ###Error API Response Actions
+
+  - setErrors
+    - invoked from API callbacks on error for actions that generate POST requests
+    - the ErrorReducer stores the form in the application's state; errors are mapped to their respective forms
+  - removeErrors
+    - invoked from API callbacks on success for actions that generate POST requests
+    - the ErrorReducer removes errors for a given form in the application's state.
+
 ##Group Cycles
 ###Groups API Request Actions
 
