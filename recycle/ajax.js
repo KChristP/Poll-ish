@@ -1,9 +1,16 @@
 let success = (data) => console.log(data)
 let data = {user: {email: "a", password: "abc"}}
+
+
+let user = {user: {email: "a", password: "password"}}
+Store.dispatch(Login(user))
+Store.dispatch(Logout(user))
+Store.dispatch(Signup(user))
+
 $.ajax({
   type: "POST",
   url: "api/users",
-  data,
+  data: user,
   success
 })
 
@@ -16,6 +23,6 @@ $.ajax({
 $.ajax({
   type: "POST",
   url: "api/session",
-  data,
+  data: user,
   success
 })
