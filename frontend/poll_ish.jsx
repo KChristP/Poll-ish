@@ -7,8 +7,10 @@ import RootReducer from './reducers/root_reducer'
 import Root from './components/root'
 
 document.addEventListener("DOMContentLoaded", () => {
-  let store = configureStore();
-
+  if (window.currentUser){
+    const preloadedState = {session: {currentUser: window.currentUser}};
+  }
+  let store = configureStore(preloadedState);
   window.Store = store
   window.Signup = signup
   window.Login = login
