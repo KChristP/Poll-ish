@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
+import HowItWorks from './how_it_works'
+
 
 class SessionForm extends React.Component {
   constructor(props){
@@ -23,7 +25,7 @@ class SessionForm extends React.Component {
   handleSubmit(e){
 		e.preventDefault();
 		const user = this.state;
-		this.props.processForm({user});
+		this.props.processForm({user});//dispatches login or signup action depending on what is in the hashHistory
 	}
 
   navLink(){
@@ -52,34 +54,35 @@ class SessionForm extends React.Component {
 
   render() {
 		return (
-			<div className="login-form-container">
-				<form onSubmit={this.handleSubmit} className="login-form-box">
-					Welcome to Poll-ish!
-					<br/>
-					Please { this.props.formType } or { this.navLink() }
-					{ this.renderErrors() }
-					<div className="login-form">
-						<br />
-						<label> Email:
-							<input type="text"
-								value={this.state.email}
-								onChange={this.update("email")}
-								className="login-input" />
-						</label>
+      <div className="logged-out-overall-box box">
+        <div className="login-form-box box">
+          <form onSubmit={this.handleSubmit} className="login-form-itself">
 
-						<br />
-						<label> Password:
-							<input type="password"
-								value={this.state.password}
-								onChange={this.update("password")}
-								className="login-input" />
-						</label>
+            <br className="login-form-message"/>
+            <h1>{ this.props.formType.replace(/\b\w/g, l => l.toUpperCase()) }</h1> or { this.navLink() }
+            { this.renderErrors() }
+            <div className="login-form-inputs-box box">
+              <br />
+              <label className="login-form-label"> Email:
+              </label>
+              <input type="text"
+                value={this.state.email}
+                onChange={this.update("email")}
+                className="login-input" />
+              <label className="login-form-label"> Password:
+              </label>
+              <input type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+                className="login-input" />
+              <input type="submit" value="Submit" className="login-submit"/>
+            </div>
+          </form>
 
-						<br />
-						<input type="submit" value="Submit" />
-					</div>
-				</form>
-			</div>
+        </div>
+        <HowItWorks />
+
+      </div>
 		);
 	}
 }

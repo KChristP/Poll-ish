@@ -1,8 +1,9 @@
 import React from 'react';
+import SidebarContainer from './sidebar_container';
 
 const Home = () => (
-  <div>
-    This is home
+  <div className="home-box">
+    <SidebarContainer/>
   </div>
 )
 
