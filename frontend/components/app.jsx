@@ -4,8 +4,8 @@ import HeaderContainer from './header_container';
 
 const App = ({children}) => (
   <div>
-    <header>
-      <Link to="/" className="header-link"><h1>Poll-ish</h1></Link>
+    <header className="header-container">
+      <Link to="/"><h1>Poll-ish</h1></Link>
       <HeaderContainer />
     </header>
     {children}

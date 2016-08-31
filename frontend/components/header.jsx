@@ -2,23 +2,23 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const sessionLinks = () => (
-  <nav className="login-signup">
+  <div className="login-signup">
     <Link to="/login" activeClassName="current">Login</Link>
     &nbsp;or&nbsp;
     <Link to="/signup" activeClassName="current">Sign up!</Link>
-  </nav>
+  </div>
 );
 
-const personalGreeting = (currentUser, logout) => (
-	<hgroup className="header-group">
-		<h2 className="header-name">Hi, {currentUser.email}!</h2>
-		<button className="header-button" onClick={logout}>Log Out</button>
-	</hgroup>
+const logoutButton = (currentUser, logout) => (
+	<div>
+		<h2 className="welcome-name">Hi, {currentUser.email}!</h2>
+    <button className="logout-button" onClick={logout}>Log Out</button>
+	</div>
 );
 
 function Header({currentUser, logout}){
   if (currentUser){
-    return personalGreeting(currentUser, logout);
+    return logoutButton(currentUser, logout);
   } else {
     return sessionLinks();
   }
