@@ -7,14 +7,14 @@ import RootReducer from './reducers/root_reducer'
 import Root from './components/root'
 
 document.addEventListener("DOMContentLoaded", () => {
+  let store;
+  let preloadedState;
   if (window.currentUser){
-    const preloadedState = {session: {currentUser: window.currentUser}};
+    preloadedState = {session: {currentUser: window.currentUser}};
+    store = configureStore(preloadedState);
+  } else {
+    store = configureStore();
   }
-  let store = configureStore(preloadedState);
-  window.Store = store
-  window.Signup = signup
-  window.Login = login
-  window.Logout = logout
-
+  window.Store = store;
   ReactDOM.render(<Root store ={store}/>, document.getElementById("root"))
 })

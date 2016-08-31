@@ -16,7 +16,7 @@ const personalGreeting = (currentUser, logout) => (
 	</hgroup>
 );
 
-function Greeting({currentUser, logout}){
+function Header({currentUser, logout}){
   if (currentUser){
     return personalGreeting(currentUser, logout);
   } else {
@@ -24,4 +24,4 @@ function Greeting({currentUser, logout}){
   }
 }
 
-export default Greeting;
+export default Header;
