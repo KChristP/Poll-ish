@@ -3,7 +3,8 @@ html, body, section, article, h1, h2, p, div, header, a {
   margin: 0px;
   /*border: 1px solid red;*/
   padding: 0px;
-  font-family: sans-serif;
+  /*font-family: sans-serif;*/
+  font-family: 'Roboto', sans-serif;
 }
 .header-container {
   display: flex;
@@ -16,9 +17,16 @@ html, body, section, article, h1, h2, p, div, header, a {
 .welcome-name, .logout-button-itself {
   padding: 5px;
 }
+
+.logout-button-itself {
+
+}
+
 .welcome-name {
   color: white;
-
+  font-size: 14px;
+  text-align: center;
+  margin:  auto;
 }
 
 .box {
@@ -79,6 +87,11 @@ html, body, section, article, h1, h2, p, div, header, a {
   /*margin: 10px;*/
 }
 
+.hiw-text {
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+}
 
 
 .login-submit {
@@ -91,6 +104,12 @@ html, body, section, article, h1, h2, p, div, header, a {
   font-size: 1em;
 }
 
+.login-submit:hover {
+
+  font-weight: bold;
+
+}
+
 .logo {
   width: 100px;
 }
@@ -98,6 +117,21 @@ html, body, section, article, h1, h2, p, div, header, a {
 .logout-button-container, .login-signup {
   padding: 20px;
   display: flex;
+}
+
+.login-signup {
+  height: 75px;
+}
+
+.login-box {
+  display: flex;
+  padding: 0 10px;
+  align-items: center;
+  color: white;
+  height: 75px;
+}
+.login-box:hover {
+  background-color: #1f4360;
 }
 
 .logout-button-container {

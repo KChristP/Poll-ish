@@ -1,23 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router';
-
+import {hashHistory, Link } from 'react-router';
 
 class Header extends React.Component {
+  componentWillReceiveProps(nextProps){
+    if(!nextProps.currentUser && this.props.currentUser){
+      hashHistory.push("/login")
+    }
+  }
+
   render(){
     let loginOrLogout;
     if (this.props.currentUser){
       loginOrLogout = (
         <div className="logout-button-container">
           <div className="welcome-name">Logged in as: {this.props.currentUser.email}!</div>
-          <button className="logout-button-itself" onClick={this.props.logout}>Log Out</button>
+          <div className="login-box">
+            <Link to="/login" className="login-link" onClick={this.props.logout}>Log Out</Link>
+          </div>
         </div>
       );
     } else {
       loginOrLogout = (
         <div className="login-signup">
-          <Link to="/login" className="login-link">Login</Link>
-          &nbsp;or&nbsp;
-          <Link to="/signup" className="signup-link">Sign up!</Link>
+          <div className="login-box">
+            <Link to="/login" className="login-link">Login</Link>
+          </div>
+          <div className="login-box">
+            <Link to="/signup" className="signup-link">Sign up!</Link>
+          </div>
         </div>
       );
     }

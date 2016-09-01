@@ -25,6 +25,7 @@ class SessionForm extends React.Component {
   handleSubmit(e){
 		e.preventDefault();
 		const user = this.state;
+    console.log("processing")
 		this.props.processForm({user});//dispatches login or signup action depending on what is in the hashHistory
 	}
 
@@ -61,16 +62,15 @@ class SessionForm extends React.Component {
             <br className="login-form-message"/>
             <h1>{ this.props.formType.replace(/\b\w/g, l => l.toUpperCase()) }</h1> or { this.navLink() }
             { this.renderErrors() }
+
             <div className="login-form-inputs-box box">
               <br />
-              <label className="login-form-label"> Email:
-              </label>
+              <label className="login-form-label"> Email:</label>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update("email")}
                 className="login-input" />
-              <label className="login-form-label"> Password:
-              </label>
+              <label className="login-form-label"> Password:</label>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update("password")}
