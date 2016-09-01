@@ -149,3 +149,11 @@ html, body, section, article, h1, h2, p, div, header, a {
   flex-direction: column;
   width: 275px;
 }
+
+.guest-login {
+  padding-top: 10px;
+}
+.guest-login:hover {
+  cursor: pointer;
+  font-weight: bold;
+}

@@ -11,6 +11,7 @@ class SessionForm extends React.Component {
       password: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.autofill = this.autofill.bind(this);
   }
   componentDidUpdate(){
     this.redirectIfLoggedIn();
@@ -53,6 +54,10 @@ class SessionForm extends React.Component {
 		return e => { this.setState({[field]: e.currentTarget.value }); };
 	}
 
+  autofill(){
+    this.props.login({user: {email: "MasterPoller", password: "password"}})
+  }
+
   render() {
 		return (
       <div className="logged-out-overall-box box">
@@ -76,6 +81,8 @@ class SessionForm extends React.Component {
                 onChange={this.update("password")}
                 className="login-input" />
               <input type="submit" value="Submit" className="login-submit"/>
+              <div onClick={this.autofill} className="guest-login">Guest Login</div>
+
             </div>
           </form>
 

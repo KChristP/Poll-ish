@@ -11,10 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830154154) do
+ActiveRecord::Schema.define(version: 20160901063557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string   "body",                    null: false
+    t.integer  "question_id",             null: false
+    t.integer  "votes",       default: 0, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
+
+  create_table "pollishes", force: :cascade do |t|
+    t.integer  "group_id",                   null: false
+    t.boolean  "live",       default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "pollishes", ["group_id"], name: "index_pollishes_on_group_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "body",       null: false
+    t.integer  "pollish_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "questions", ["pollish_id"], name: "index_questions_on_pollish_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
