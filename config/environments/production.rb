@@ -79,5 +79,6 @@ Rails.application.configure do
 
   # for heroku
   config.serve_static_files = true
+  config.serve_static_assets = true
 
 end
