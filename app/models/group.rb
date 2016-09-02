@@ -13,9 +13,12 @@ class Group < ActiveRecord::Base
   validates :name, :user, presence: true
 
   belongs_to :user
+
   has_many :pollishes,
-    foreign_key: :pollish_id,
+    foreign_key: :group_id,
     primary_key: :id,
-    class_name: :Pollish
+    class_name: :Pollish,
+    inverse_of: :group,
+    dependent: :destroy
 
 end

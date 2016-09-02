@@ -13,5 +13,15 @@
 class Answer < ActiveRecord::Base
   validates :body, :question, presence: true
 
-  belongs_to :question
+  belongs_to :question,
+    inverse_of: :answers
+    
+  has_one :pollish,
+    through: :question
+
+  has_one :group,
+   through: :pollish
+
+  has_one :user,
+    through: :group
 end
