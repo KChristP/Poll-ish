@@ -26,7 +26,6 @@ class SessionForm extends React.Component {
   handleSubmit(e){
 		e.preventDefault();
 		const user = this.state;
-    console.log("processing")
 		this.props.processForm({user});//dispatches login or signup action depending on what is in the hashHistory
 	}
 

@@ -55,3 +55,12 @@ $.ajax({
 
 Pollish.create({live: false, group_id: 1, questions_attributes: [{body: "who"}]})
 Pollish.create({live: false, group_id: 1, questions_attributes: [{body: "who", answers_attributes: [{body: "myself"}]}]})
+
+
+let success = (data) => console.log(data)
+$.ajax({
+  type: "GET",
+  url: "api/pollishes",
+  data: {poll: {group_id: 1}},
+  success
+})

@@ -1,8 +1,9 @@
 class Api::PollishesController < ApplicationController
   def index
-    user_id = Group.find_by_id(poll_params[:group_id])
-    @polls = User.find_by_id(user_id).pollishes
+    # user_id = Group.find_by_id(params[:user_id])
+    @polls = User.find_by_id(params[:user_id]).pollishes
   end
+
   def create
     compile_new_poll_from_params
     if @poll.save
@@ -15,7 +16,16 @@ class Api::PollishesController < ApplicationController
 
   def edit#TODO need to add a compare function to compare Q&A of params vs Q&A of db object. if different do the swap as written
     #if not different - just swap group_id or live status and skip this (so we don't lose poll vote data every time we go live)
-    compile_new_poll_from_params
+    @poll = Pollish.find_by_id(poll_params[:id])
+    if same_q_and_a?
+      manage_live
+      manage_group_id
+      render :show
+      return
+    else
+      compile_new_poll_from_params
+    end
+
     if @poll.save
       ensure_single_live
       Pollish.find_by_id(poll_params[:id]).destroy
@@ -68,10 +78,24 @@ class Api::PollishesController < ApplicationController
     )
   end
 
-  # def update_question(question)
-  #   @question = Question.find_by_id(question[:id])
-  #   @question.body = question[:body]
-  # end
+  def same_q_and_a?
+    db_poll = Pollish.find_by_id(poll_params[:id])
+    db_poll.questions[0].body == params[:poll][:question][:body] &&
+      db_poll.answers.sort == params[:poll][:question][:answers].sort
+  end
+
+  def manage_live
+    if poll_params[:live] != @poll.live
+      @poll.live = poll_params[:live]
+    end
+  end
+
+  def manage_group_id
+    if poll_params[:group_id] != @poll.group_id
+      group = Group.find_by_id(poll_params[:id])
+      @poll.group = group
+    end
+  end
 end
 
 # Pollish.new({live: false, group_id: 1, questions_attributes: [{body: "why not zoidberg?", answers_attributes: [{body: "because"}, {body: "I said so"}]}]})
@@ -108,14 +132,7 @@ end
 #
 # end
 
-# def manage_live
-#   if poll_params[:live] != @poll.live
-#     @poll.live = poll_params[:live]
-#   end
+# def update_question(question)
+#   @question = Question.find_by_id(question[:id])
+#   @question.body = question[:body]
 # end
-#
-# def manage_group_id
-#   if poll_params[:group_id] != @poll.group_id
-#     group = Group.find_by_id(poll_params[:id])
-#     @poll.group = group
-#   end

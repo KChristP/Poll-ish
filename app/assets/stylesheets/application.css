@@ -38,7 +38,7 @@ html, body, section, article, h1, h2, p, div, header, a {
 }
 .sidebar-box {
   position: absolute;
-  top: -250px;
+  /*top: -250px;*/
   right: 0;
   /* height: 100%; */
   top: 75px;
@@ -49,6 +49,11 @@ html, body, section, article, h1, h2, p, div, header, a {
   border: 1px solid red;
 }
 
+.main-panel-box {
+  position: absolute;
+  top: 75px;
+  left: 200px;
+}
 
 .login-link, .signup-link {
   color: white;
