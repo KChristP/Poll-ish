@@ -1,4 +1,5 @@
 import React from 'react';
+import PollDetail from './poll_detail'
 
 
 class PollItem extends React.Component {
@@ -10,6 +11,7 @@ class PollItem extends React.Component {
     return(
       <div>
         <li>{this.props.poll.question.body}</li>
+        <PollDetail poll={this.props.poll} key={this.props.poll.id}/>
       </div>
     )
   }

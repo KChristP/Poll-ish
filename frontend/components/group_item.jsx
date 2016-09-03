@@ -1,4 +1,6 @@
 import React from 'react';
+import PollItem from './poll_item'
+
 
 class GroupItem extends React.Component {
   constructor(props){
@@ -6,9 +8,15 @@ class GroupItem extends React.Component {
   }
 
   render(){
+    let this_groups_poll_items = this.props.polls.map((poll) => (
+      <PollItem poll={poll} key={poll.question.body + poll.id}/>
+    ))
     return(
       <div>
-        {this.props.group.name}
+        <div>
+          {this.props.group.name}
+        </div>
+        {this_groups_poll_items}
       </div>
     )
   }

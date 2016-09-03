@@ -1,5 +1,4 @@
 import React from 'react';
-import PollItem from './poll_item'
 import GroupItem from './group_item'
 
 class MainPanel extends React.Component {
@@ -32,15 +31,12 @@ class MainPanel extends React.Component {
         })
 
         let this_groups_polls = grouped_poll_ids.map((poll_id) => {
-          return (<PollItem poll={polls[poll_id]} key={poll_id}/>)
+          return (polls[poll_id])
         })
 
         polls_by_group.push(
           <div key={group_id}>
-            <GroupItem group={this.props.groups[group_id]}/>
-            <ul>
-              {this_groups_polls}
-            </ul>
+            <GroupItem group={this.props.groups[group_id]} polls={this_groups_polls}/>
           </div>
         )
       })
