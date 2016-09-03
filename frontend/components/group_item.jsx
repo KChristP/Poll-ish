@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-class PollItem extends React.Component {
+class GroupItem extends React.Component {
   constructor(props){
     super(props)
   }
@@ -9,10 +8,10 @@ class PollItem extends React.Component {
   render(){
     return(
       <div>
-        <li>{this.props.poll.question.body}</li>
+        {this.props.group.name}
       </div>
     )
   }
 }
 
-export default PollItem;
+export default GroupItem;
