@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PollItem from './poll_item'
 
 class MainPanel extends React.Component {
   constructor(props){
@@ -11,39 +11,41 @@ class MainPanel extends React.Component {
     this.props.requestAllPolls(id)
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   this.forceUpdate()
-  // }
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps);
+
+    this.forceUpdate()
+  }
 
   render(){
     let groups = this.props.groups;
     let polls = this.props.polls;
     let polls_by_group = [];
     if (Object.keys(polls).length > 0 && Object.keys(groups).length > 0){
-      let group_keys = Object.keys(this.props.groups);
-      let poll_keys = Object.keys(this.props.polls);
+      let group_keys = Object.keys(groups);
+      let poll_keys = Object.keys(polls);
       groups = this.props.groups;
       polls = this.props.polls;
 
+      debugger
       group_keys.forEach((group_id) => {
 
         let grouped_poll_ids = poll_keys.filter((key) => {
-          return polls[key].group_id === group_id;
+          return polls[key].group_id === parseInt(group_id) && polls[key].question;
         })
 
         let this_groups_polls = grouped_poll_ids.map((poll_id) => {
-          return <div>{polls[poll_id].question.body}</div>
+          return (<PollItem poll={polls[poll_id]} key={poll_id}/>)//<li>{polls[poll_id].question.body}</li>)
         })
-        debugger
 
         polls_by_group.push(
           <div key={group_id}>
             <div>
               {this.props.groups[group_id].name}
             </div>
-            <div>
+            <ul>
               {this_groups_polls}
-            </div>
+            </ul>
           </div>
         )
       })
@@ -61,6 +63,7 @@ class MainPanel extends React.Component {
     //     )
     //   })
     // }
+    console.log("balls",polls_by_group);
     return(
       <div>
         {polls_by_group}
