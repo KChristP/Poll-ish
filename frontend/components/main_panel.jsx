@@ -16,52 +16,54 @@ class MainPanel extends React.Component {
   // }
 
   render(){
-    // debugger
-    // let groups = this.props.groups
-    // let polls = this.props.polls
-    // let polls_by_group = [];
-    // if (this.props.polls){//this.props.groups &&
-    //   debugger
-    //   let group_keys = Object.keys(this.props.groups);
-    //   let poll_keys = Object.keys(this.props.polls);
-    //
-    //   group_keys.forEach((group_id) => {
-    //
-    //     let grouped_poll_ids = poll_keys.filter((key) => {
-    //       this.props.polls[key].group_id === group_id
-    //     })
-    //
-    //     let this_groups_polls = grouped_poll_ids.map((poll_id) => {
-    //       <div>{this.props.polls[poll_id].question.body}</div>
-    //     })
-    //
-    //     polls_by_group.push(
-    //       <div key={group_id}>
-    //         <div>
-    //           {this.props.groups[group_id].name}
-    //         </div>
-    //         <div>
-    //           {this_groups_polls}
-    //         </div>
-    //       </div>
-    //     )
-    //   })
-    // }
-    let poll_keys = Object.keys(this.props.polls)
-    let poll_names
-    if (poll_keys.length > 0){
-      let poll_keys_with_questions = poll_keys.filter((key) => {
-        return this.props.polls[key].question
-      })
-      poll_names = poll_keys_with_questions.map((key) => {
-        return (
-          <div>{this.props.polls[key].question.body}</div>
+    let groups = this.props.groups;
+    let polls = this.props.polls;
+    let polls_by_group = [];
+    if (Object.keys(polls).length > 0 && Object.keys(groups).length > 0){
+      let group_keys = Object.keys(this.props.groups);
+      let poll_keys = Object.keys(this.props.polls);
+      groups = this.props.groups;
+      polls = this.props.polls;
+
+      group_keys.forEach((group_id) => {
+
+        let grouped_poll_ids = poll_keys.filter((key) => {
+          return polls[key].group_id === group_id;
+        })
+
+        let this_groups_polls = grouped_poll_ids.map((poll_id) => {
+          return <div>{polls[poll_id].question.body}</div>
+        })
+        debugger
+
+        polls_by_group.push(
+          <div key={group_id}>
+            <div>
+              {this.props.groups[group_id].name}
+            </div>
+            <div>
+              {this_groups_polls}
+            </div>
+          </div>
         )
       })
     }
+    // let poll_keys = Object.keys(this.props.polls)
+    // let poll_names
+    // let groups = this.props.groups
+    // if (poll_keys.length > 0){
+    //   let poll_keys_with_questions = poll_keys.filter((key) => {
+    //     return this.props.polls[key].question
+    //   })
+    //   poll_names = poll_keys_with_questions.map((key) => {
+    //     return (
+    //       <div>{this.props.polls[key].question.body}</div>
+    //     )
+    //   })
+    // }
     return(
       <div>
-        {poll_names}
+        {polls_by_group}
       </div>
     )
   }

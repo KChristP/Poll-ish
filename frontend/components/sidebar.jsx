@@ -8,7 +8,7 @@ class Sidebar extends React.Component {
   }
 
   groups_for_main_panel(){
-    this.props.groups// need to dynamically send down only the group that a user selects, or all groups if AllGroups is selected
+    return this.props.groups// need to dynamically send down only the group that a user selects, or all groups if AllGroups is selected
   }
   render(){
 
