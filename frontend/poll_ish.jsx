@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import configureStore from './store/store'
+import configureStore from './store/store';
 import { createStore } from 'redux';
-import {signup, login, logout} from './actions/session_actions'
-import RootReducer from './reducers/root_reducer'
-import Root from './components/root'
+import {signup, login, logout} from './actions/session_actions';
+import RootReducer from './reducers/root_reducer';
+import Root from './components/root';
+import Modal from 'react-modal';
 
 document.addEventListener("DOMContentLoaded", () => {
+  Modal.setAppElement(document.body);//what content react-modal will disable
   let store;
   let preloadedState;
   if (window.currentUser){

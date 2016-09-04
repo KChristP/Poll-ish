@@ -44,9 +44,12 @@ html, body, section, article, h1, h2, p, div, header, a {
   top: 75px;
   bottom: 0;
   left: 0;
-  width: 200px;
+  width: 175px;
   background: #ccc;
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .main-panel-box {
@@ -161,4 +164,17 @@ html, body, section, article, h1, h2, p, div, header, a {
 .guest-login:hover {
   cursor: pointer;
   font-weight: bold;
+}
+
+.group-sidebar-item {
+  padding: 20px;
+}
+
+.new-poll-form-itself {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-poll-form-box {
+  width: 250px;
 }

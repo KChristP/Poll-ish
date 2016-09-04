@@ -1,12 +1,16 @@
 import {
   PollConstants,
   requestAllPolls,
-  receiveAllPolls} from '../actions/poll_actions';
-import {ajaxForAllPolls} from '../util/poll_util';
+  receiveAllPolls,
+  createPoll,
+  receivePoll} from '../actions/poll_actions';
+import {
+  ajaxForAllPolls,
+  ajaxForCreatePoll} from '../util/poll_util';
 
 export default ({getState, dispatch}) => next => action => {
   const successIndexCallback = polls => dispatch(receiveAllPolls(polls));
-  // const group_id = getState().session.currentUser.id
+  const successPollCallback = poll => dispatch(receivePoll(poll))
   const errorCallback = xhr => {
     const errors = xhr.responseJSON;
     dispatch(receiveErrors(errors));
@@ -15,6 +19,9 @@ export default ({getState, dispatch}) => next => action => {
   switch(action.type){
     case PollConstants.REQUEST_ALL_POLLS:
       ajaxForAllPolls({user_id: action.user_id}, successIndexCallback, errorCallback);
+      return next(action);
+    case PollConstants.CREATE_POLL:
+      ajaxForCreatePoll(action.poll, successPollCallback, errorCallback);
       return next(action);
     default:
       return next(action);

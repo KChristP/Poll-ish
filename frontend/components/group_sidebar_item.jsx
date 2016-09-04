@@ -8,7 +8,7 @@ class GroupSidebarItem extends React.Component {
 
   render(){
     return(
-      <div onClick={(event) => this.props.changeActiveGroup(event, this.props.group)}>
+      <div className="group-sidebar-item" onClick={(event) => this.props.changeActiveGroup(event, this.props.group)}>
         <li>{this.props.group.name}</li>
       </div>
     )

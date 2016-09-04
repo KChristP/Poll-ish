@@ -7,3 +7,13 @@ export const ajaxForAllPolls = function(user_id, success, error) {
     error
   })
 }
+
+export const ajaxForCreatePoll = function(poll, success, error) {
+  $.ajax({
+    type: "POST",
+    url: "api/pollishes",
+    data: poll,
+    success,
+    error
+  })
+}

@@ -11,6 +11,7 @@ class PollItem extends React.Component {
     return(
       <div>
         <li>{this.props.poll.question.body}</li>
+        <button>Delete</button>
         <PollDetail poll={this.props.poll} key={this.props.poll.id}/>
       </div>
     )
