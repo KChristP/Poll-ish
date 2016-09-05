@@ -14,7 +14,7 @@ class PollDetail extends React.Component {
       <li key={answer.body}>{answer.body}</li>
     ))
     return(
-      <div>
+      <div className="poll-detail-box">
         {this.props.poll.question.body}
         {answers}
         <button>{this.props.poll.live ? "Live" : "Make Live"}</button>

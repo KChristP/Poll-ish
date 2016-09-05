@@ -50,11 +50,11 @@ class GroupItem extends React.Component {
       </form>
     ) : "";
     return(
-      <div>
-        <button onClick={this.toggleEditInput}>{this.state.editInputOpen ? "Cancel" : "Edit"}</button>
-        {editInput}
-        <div>
+      <div className="group-item-box">
+        <div className="group-item-title">
           {this.props.group.name}
+          <div>{editInput}</div>
+          <button onClick={this.toggleEditInput}>{this.state.editInputOpen ? "Cancel" : "Edit"}</button>
         </div>
         {this_groups_poll_items}
 

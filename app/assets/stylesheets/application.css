@@ -168,8 +168,42 @@ html, body, section, article, h1, h2, p, div, header, a {
 
 .group-sidebar-item {
   padding: 20px;
+  list-style: none;
+}
+.poll-item-box {
+  padding: 10px 25px;
+}
+.poll-item-box:hover {
+  background-color: #d8e3ec
+}
+.poll-item-title {
+  display: flex;
+  justify-content: space-between;
+}
+.poll-detail-box{
+
+}
+.poll-item-button-box {
+  display: flex;
+  justify-content: space-between;
+}
+.group-item-title {
+  /* color: #203349; */
+  background: #ccdce8;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
 }
 
+.group-item-box {
+  margin-bottom: 10px
+}
+
+.group-item-title:hover {
+  background-color: #bad0e0;
+}
 .new-poll-form-itself {
   display: flex;
   flex-direction: column;
