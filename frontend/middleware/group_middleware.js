@@ -3,10 +3,14 @@ import {
   requestAllGroups,
   receiveAllGroups,
   updateGroup,
-  receiveGroup} from '../actions/group_actions';
+  receiveGroup
+} from '../actions/group_actions';
+
 import {
   ajaxForGroups,
-  ajaxForUpdateGroup} from '../util/group_util'
+  ajaxForUpdateGroup,
+  ajaxForCreateGroup
+} from '../util/group_util'
 
 export default ({getState, dispatch}) => next => action => {
   const successIndexCallback = groups => dispatch(receiveAllGroups(groups));
@@ -25,6 +29,9 @@ export default ({getState, dispatch}) => next => action => {
       return next(action);
     case GroupConstants.UPDATE_GROUP:
       ajaxForUpdateGroup({group: action.group}, successGroupCallback, errorCallback);
+      return next(action);
+    case GroupConstants.CREATE_GROUP:
+      ajaxForCreateGroup({group: action.group}, successGroupCallback, errorCallback);
       return next(action);
     default:
       return next(action);

@@ -11,7 +11,7 @@ class PollDetail extends React.Component {
   render(){
     // debugger
     let answers = this.props.poll.question.answers.map((answer) => (
-      <li key={answer.body}>{answer.body}</li>
+      <li key={answer.body}>{answer.body}, .......{answer.votes}votes</li>
     ))
     return(
       <div className="poll-detail-box">

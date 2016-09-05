@@ -5,8 +5,15 @@ import GroupSidebarItem from './group_sidebar_item'
 class Sidebar extends React.Component {
   constructor(props){
     super(props)
-    this.state = {activeGroup: this.props.groups}
+    this.state = {
+      activeGroup: this.props.groups,
+      groupToAdd: "",
+      addGroup: false
+    }
     this.changeActiveGroup = this.changeActiveGroup.bind(this)
+    this.handleGroupSubmit = this.handleGroupSubmit.bind(this)
+    this.handleNameChange = this.handleNameChange.bind(this)
+    this.toggleAddGroup = this.toggleAddGroup.bind(this)
   }
 
   componentWillMount(){
@@ -18,14 +25,30 @@ class Sidebar extends React.Component {
   }
 
   groups_for_main_panel(){
-    return this.props.groups// TODO need to dynamically send down only the group that a user selects, or all groups if AllGroups is selected
+    return this.props.groups
   }
 
   changeActiveGroup(e, group){
     e.preventDefault()
     let group_obj = {}
     group_obj[group.id] = group
-    this.setState({activeGroup: group_obj})
+    this.setState(Object.assign({}, this.state, {activeGroup: group_obj}))
+  }
+
+  handleGroupSubmit(e){
+    e.preventDefault()
+    let group = {name: this.state.groupToAdd, user_id: this.props.user_id}
+    this.props.createGroup(group)
+    this.toggleAddGroup()
+  }
+
+  toggleAddGroup(){
+    this.setState(Object.assign({}, this.state, {addGroup: !this.state.addGroup}))
+  }
+
+  handleNameChange(e){
+    let value = e.target.value
+    this.setState(Object.assign({}, this.state, {groupToAdd: value}))
   }
 
   render(){
@@ -40,10 +63,20 @@ class Sidebar extends React.Component {
             changeActiveGroup={this.changeActiveGroup}/>
       ))
     }
+
+    let addGroupInput = this.state.addGroup ? (
+      <form onSubmit={this.handleGroupSubmit}>
+        <input type="text" value={this.state.groupToAdd} onChange={this.handleNameChange}/>
+        <input type="submit" value="Create Group!"/>
+      </form>
+    ) : "";
+
     return(
       <div>
         <div className="sidebar-box box">
           {group_names}
+          <button onClick={this.toggleAddGroup}>{this.state.addGroup ? "Cancel" : "Add Group"}</button>
+          {addGroupInput}
         </div>
         <div className="main-panel-box">
           <MainPanelContainer groups={this.state.activeGroup} key={1}/>

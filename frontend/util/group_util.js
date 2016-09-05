@@ -17,4 +17,13 @@ export const ajaxForUpdateGroup = function(group, success, error) {
     error
   })
 }
+export const ajaxForCreateGroup = function(group, success, error) {
+  $.ajax({
+    type: "POST",
+    url: "api/groups/",
+    data: group,
+    success,
+    error
+  })
+}
 // group_user_id needs to be in form {group: {user_id: 1}}
