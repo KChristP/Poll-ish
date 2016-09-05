@@ -1,5 +1,5 @@
 import React from 'react';
-import GroupItem from './group_item'
+import GroupItemContainer from './group_item_container'
 
 class MainPanel extends React.Component {
   constructor(props){
@@ -36,7 +36,7 @@ class MainPanel extends React.Component {
 
         polls_by_group.push(
           <div key={group_id}>
-            <GroupItem group={this.props.groups[group_id]} polls={this_groups_polls}/>
+            <GroupItemContainer group={this.props.groups[group_id]} polls={this_groups_polls}/>
           </div>
         )
       })

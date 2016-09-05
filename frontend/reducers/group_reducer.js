@@ -5,8 +5,9 @@ const GroupReducer = (state = {}, action) => {
   // debugger
   switch(action.type){
     case GroupConstants.RECEIVE_ALL_GROUPS:
-    // debugger
       return merge({}, action.groups, state.groups);
+    case GroupConstants.RECEIVE_GROUP:
+      return merge({}, state, action.group);
     default:
       return state;
   }

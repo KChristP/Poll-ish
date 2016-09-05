@@ -12,10 +12,17 @@ class GroupItem extends React.Component {
     };
     this.handleNameChange = this.handleNameChange.bind(this)
     this.toggleEditInput = this.toggleEditInput.bind(this)
+    this.handleGroupEditSubmit = this.handleGroupEditSubmit.bind(this)
   }
 
-  handleGroupEditSubmit(){
-    this.props.updateGroup(group)
+  handleGroupEditSubmit(e){
+    e.preventDefault();
+    let newGroup = {
+      name: this.state.name,
+      user_id: this.props.group.user_id,
+      id: this.props.group.id}
+    this.props.updateGroup(newGroup);
+    this.toggleEditInput()
   }
 
   toggleEditInput(){
@@ -39,6 +46,7 @@ class GroupItem extends React.Component {
     let editInput = this.state.editInputOpen ? (
       <form onSubmit={this.handleGroupEditSubmit}>
         <input type="text" value={this.state.name} onChange={this.handleNameChange}/>
+        <input type="submit" value="Submit"/>
       </form>
     ) : "";
     return(

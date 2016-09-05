@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { logout } from '../actions/session_actions';TODO write proper actions for group items
-import GroupItem from './header';
+import { updateGroup } from '../actions/group_actions';
+import GroupItem from './group_item';
 
 const mapStateToProps = state => ({
 

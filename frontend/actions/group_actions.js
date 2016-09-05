@@ -14,7 +14,7 @@ export const receiveAllGroups = (groups) => ({
   groups
 });
 
-export const UpdateGroup = (group) => ({
+export const updateGroup = (group) => ({
   type: GroupConstants.UPDATE_GROUP,
   group
 });

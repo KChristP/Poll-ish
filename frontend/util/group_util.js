@@ -7,4 +7,14 @@ export const ajaxForGroups = function(group_user_id, success, error) {
     error
   })
 }
+export const ajaxForUpdateGroup = function(group, success, error) {
+  let url = "api/groups/" + group.group.id
+  $.ajax({
+    type: "PATCH",
+    url: url,
+    data: group,
+    success,
+    error
+  })
+}
 // group_user_id needs to be in form {group: {user_id: 1}}
