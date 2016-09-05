@@ -1,5 +1,5 @@
 import React from 'react';
-import PollItem from './poll_item'
+import PollItemContainer from './poll_item_container'
 import PollFormContainer from './poll_form_container'
 
 
@@ -7,21 +7,44 @@ class GroupItem extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      modalOpen: false
+      editInputOpen: false,
+      name: this.props.group.name
     };
-    this._handleNewPollClick = this._handleNewPollClick.bind(this)
+    this.handleNameChange = this.handleNameChange.bind(this)
+    this.toggleEditInput = this.toggleEditInput.bind(this)
   }
 
-  _handleNewPollClick(){
-    this.setState({modalOpen: true})
+  handleGroupEditSubmit(){
+    this.props.updateGroup(group)
   }
+
+  toggleEditInput(){
+    this.setState(Object.assign({}, this.state, {editInputOpen: !this.state.editInputOpen}))
+  }
+
+  handleNameChange(event){
+    const value = event.target.value
+    if(typeof value !== 'undefined') {
+      this.setState(Object.assign({}, this.state, {name: value}))
+    }
+  }
+  // _handleNewPollClick(){
+  //   this.setState({modalOpen: true})
+  // }
 
   render(){
     let this_groups_poll_items = this.props.polls.map((poll) => (
-      <PollItem poll={poll} key={poll.question.body + poll.id}/>
+      <PollItemContainer poll={poll} key={poll.question.body + poll.id}/>
     ))
+    let editInput = this.state.editInputOpen ? (
+      <form onSubmit={this.handleGroupEditSubmit}>
+        <input type="text" value={this.state.name} onChange={this.handleNameChange}/>
+      </form>
+    ) : "";
     return(
       <div>
+        <button onClick={this.toggleEditInput}>{this.state.editInputOpen ? "Cancel" : "Edit"}</button>
+        {editInput}
         <div>
           {this.props.group.name}
         </div>

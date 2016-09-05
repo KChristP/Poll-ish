@@ -2,9 +2,9 @@ import React from 'react';
 //TODO this component should show
 
 class PollDetail extends React.Component {
-  // constructor(props){
-  //   super(props)
-  // }
+  constructor(props){
+    super(props)
+  }
 
 
 
@@ -15,9 +15,10 @@ class PollDetail extends React.Component {
     ))
     return(
       <div>
-        {this.props.poll.live ? "Live" : "Make Live"}
         {this.props.poll.question.body}
         {answers}
+        <button>{this.props.poll.live ? "Live" : "Make Live"}</button>
+        <button>Delete</button>
       </div>
     )
   }

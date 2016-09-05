@@ -64,3 +64,23 @@ $.ajax({
   data: {poll: {group_id: 1}},
   success
 })
+
+// Started POST "/api/pollishes" for 127.0.0.1 at 2016-09-04 13:48:43 -0700
+// Processing by Api::PollishesController#create as JSON
+//   Parameters: {"poll"=>{"live"=>"false", "question"=>{"body"=>"Did it work?", "answers"=>["Yes", "No", "Maybe", "I don't know"]}}}
+// Unpermitted parameter: question
+// Unpermitted parameter: question
+//    (3.5ms)  BEGIN
+//    (0.2ms)  ROLLBACK
+// Completed 200 OK in 231ms (Views: 0.9ms | ActiveRecord: 3.7ms)
+//
+//
+//
+//
+// Started POST "/api/pollishes" for 127.0.0.1 at 2016-09-04 13:54:35 -0700
+// Processing by Api::PollishesController#create as JSON
+//   Parameters: {"poll"=>{"live"=>"false", "group_id"=>"1", "question"=>{"body"=>"who", "answers"=>["me", "you"]}}}
+// Unpermitted parameter: question
+// Unpermitted parameter: question
+// (0.2ms)  BEGIN
+//   Group Load (0.3ms)  SELECT  "groups".* FROM "groups" WHERE "groups"."id" = $1 LIMIT 1  [["id", 1]]

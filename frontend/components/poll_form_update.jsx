@@ -2,16 +2,17 @@ import React from 'react';
 import Modal from 'react-modal'
 import ModalStyle from './modal_style'
 
-class PollForm extends React.Component {
+class PollFormUpdate extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       modalOpen: false,
-      question: "",
-      answers: [],
-      answerCount: 2
+      id: this.props.poll.id,
+      question: this.props.poll.question.body,
+      answers: this.props.poll.question.answers.map((answer) => answer.body),
+      answerCount: this.props.poll.question.answers.length
     };
-    this._handleNewPollClick = this._handleNewPollClick.bind(this)
+    this._handleUpdatePollClick = this._handleUpdatePollClick.bind(this)
     this._onModalClose = this._onModalClose.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleQuestionChange = this.handleQuestionChange.bind(this)
@@ -19,7 +20,7 @@ class PollForm extends React.Component {
     this.addAnswerField = this.addAnswerField.bind(this)
   }
 
-  _handleNewPollClick(){
+  _handleUpdatePollClick(){
     this.setState(Object.assign({}, this.state, {modalOpen: true}))
   }
 
@@ -36,8 +37,7 @@ class PollForm extends React.Component {
     e.preventDefault();
     let answers = this.state.answers.filter(answer => answer !== undefined)
     let question = {body: this.state.question, answers: answers}
-    this.props.createPoll({poll: {live: false, group_id: this.props.groupId, question: question}})
-    //{poll: {live: false, group_id: 1, question: {body: "who", answers: ["me", "you"]}}}
+    this.props.updatePoll({poll: {id: this.props.poll.id, live: false, group_id: this.props.poll.group_id, question: question}})
     this.setState(Object.assign({}, this.state, {modalOpen: false}))
   }
 
@@ -69,9 +69,9 @@ class PollForm extends React.Component {
     return(
       <div>
         <button
-          id="new-poll-button"
-          onClick={this._handleNewPollClick}>
-          Add New Poll
+          id="edit-poll-button"
+          onClick={this._handleUpdatePollClick}>
+          Edit
         </button>
         <Modal
           isOpen={this.state.modalOpen}
@@ -84,7 +84,7 @@ class PollForm extends React.Component {
               Question <input type="text" value={this.state.question} onChange={this.handleQuestionChange}/>
               {answerInputs}
               <div onClick={this.addAnswerField}>Add Another Answer!</div>
-              <input type="submit" value="Submit New Poll!" />
+              <input type="submit" value="Update!" />
             </form>
           </div>
         </Modal>
@@ -93,4 +93,4 @@ class PollForm extends React.Component {
   }
 }
 
-export default PollForm;
+export default PollFormUpdate;

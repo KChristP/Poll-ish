@@ -1,6 +1,7 @@
 
   @polls.each do |poll|
     json.set! poll.id do
+      json.set! :id, poll.id
       json.set! :group_id, poll.group_id
       json.set! :live, poll.live
       json.set! :question do

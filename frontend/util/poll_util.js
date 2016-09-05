@@ -17,3 +17,24 @@ export const ajaxForCreatePoll = function(poll, success, error) {
     error
   })
 }
+export const ajaxForDestroyPoll = function(poll, success, error) {
+  let url = "api/pollishes/" + poll.id
+  $.ajax({
+    type: "DELETE",
+    url: url,
+    data: poll,
+    success,
+    error
+  })
+}
+
+export const ajaxForUpdatePoll = function(poll, success, error) {
+  let url = "api/pollishes/" + poll.id
+  $.ajax({
+    type: "PATCH",
+    url: url,
+    data: poll,
+    success,
+    error
+  })
+}
