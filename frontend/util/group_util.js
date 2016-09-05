@@ -26,4 +26,14 @@ export const ajaxForCreateGroup = function(group, success, error) {
     error
   })
 }
-// group_user_id needs to be in form {group: {user_id: 1}}
+
+export const ajaxForDestroyGroup = function(group, success, error) {
+  let url = "api/groups/" + group.group.id
+  $.ajax({
+    type: "DELETE",
+    url: url,
+    data: group,
+    success,
+    error
+  })
+}

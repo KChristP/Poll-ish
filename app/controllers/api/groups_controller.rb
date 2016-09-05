@@ -23,7 +23,7 @@ class Api::GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find_by(user_params)
+    @group = Group.find_by_id(group_params[:id])
     if @group.destroy
       render :show
     else

@@ -13,6 +13,7 @@ class GroupItem extends React.Component {
     this.handleNameChange = this.handleNameChange.bind(this)
     this.toggleEditInput = this.toggleEditInput.bind(this)
     this.handleGroupEditSubmit = this.handleGroupEditSubmit.bind(this)
+    this.handleDestroyGroup = this.handleDestroyGroup.bind(this)
   }
 
   handleGroupEditSubmit(e){
@@ -35,9 +36,10 @@ class GroupItem extends React.Component {
       this.setState(Object.assign({}, this.state, {name: value}))
     }
   }
-  // _handleNewPollClick(){
-  //   this.setState({modalOpen: true})
-  // }
+
+  handleDestroyGroup(){
+    this.props.destroyGroup(this.props.group)
+  }
 
   render(){
     let this_groups_poll_items = this.props.polls.map((poll) => (
@@ -54,6 +56,7 @@ class GroupItem extends React.Component {
         <div className="group-item-title">
           {this.props.group.name}
           <div>{editInput}</div>
+          <button onClick={this.handleDestroyGroup}>Delete Group</button>
           <button onClick={this.toggleEditInput}>{this.state.editInputOpen ? "Cancel" : "Edit"}</button>
         </div>
         {this_groups_poll_items}

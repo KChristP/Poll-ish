@@ -3,13 +3,15 @@ import {
   requestAllGroups,
   receiveAllGroups,
   updateGroup,
-  receiveGroup
+  receiveGroup,
+  removeGroup
 } from '../actions/group_actions';
 
 import {
   ajaxForGroups,
   ajaxForUpdateGroup,
-  ajaxForCreateGroup
+  ajaxForCreateGroup,
+  ajaxForDestroyGroup
 } from '../util/group_util'
 
 export default ({getState, dispatch}) => next => action => {
@@ -17,6 +19,9 @@ export default ({getState, dispatch}) => next => action => {
   const successGroupCallback = group => {
    dispatch(receiveGroup(group));
   }
+  const successRemoveCallback = group => {
+    dispatch(removeGroup(group));
+  };
   const errorCallback = xhr => {
     const errors = xhr.responseJSON;
     dispatch(receiveErrors(errors));
@@ -32,6 +37,9 @@ export default ({getState, dispatch}) => next => action => {
       return next(action);
     case GroupConstants.CREATE_GROUP:
       ajaxForCreateGroup({group: action.group}, successGroupCallback, errorCallback);
+      return next(action);
+    case GroupConstants.DESTROY_GROUP:
+      ajaxForDestroyGroup({group: action.group}, successRemoveCallback, errorCallback);
       return next(action);
     default:
       return next(action);

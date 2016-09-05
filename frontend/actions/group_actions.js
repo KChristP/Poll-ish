@@ -3,7 +3,9 @@ export const GroupConstants = {
   RECEIVE_ALL_GROUPS: "RECEIVE_ALL_GROUPS",
   UPDATE_GROUP: "UPDATE_GROUP",
   RECEIVE_GROUP: "RECEIVE_GROUP",
-  CREATE_GROUP: "CREATE_GROUP"
+  CREATE_GROUP: "CREATE_GROUP",
+  DESTROY_GROUP: "DESTROY_GROUP",
+  REMOVE_GROUP: "REMOVE_GROUP"
 };
 
 export const requestAllGroups = () => ({
@@ -27,5 +29,15 @@ export const receiveGroup = (group) => ({
 
 export const createGroup = (group) => ({
   type: GroupConstants.CREATE_GROUP,
+  group
+});
+
+export const destroyGroup = (group) => ({
+  type: GroupConstants.DESTROY_GROUP,
+  group
+});
+
+export const removeGroup = (group) => ({
+  type: GroupConstants.REMOVE_GROUP,
   group
 });

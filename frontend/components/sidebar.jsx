@@ -31,8 +31,13 @@ class Sidebar extends React.Component {
   changeActiveGroup(e, group){
     e.preventDefault()
     let group_obj = {}
-    group_obj[group.id] = group
-    this.setState(Object.assign({}, this.state, {activeGroup: group_obj}))
+    if (group.id){
+      group_obj[group.id] = group
+    } else {
+      group_obj = group
+    }
+    let ag_object = {activeGroup: group_obj}
+    this.setState(Object.assign({}, this.state, ag_object))
   }
 
   handleGroupSubmit(e){
@@ -53,10 +58,10 @@ class Sidebar extends React.Component {
 
   render(){
 
-    let group_names = "Loading..."
+    let groupSidebarItems = "Loading..."
     if (this.props.groups){
       let group_keys = Object.keys(this.props.groups)
-      group_names = group_keys.map((group_id) => (
+      groupSidebarItems = group_keys.map((group_id) => (
           <GroupSidebarItem
             group={this.props.groups[group_id]}
             key={group_id}
@@ -70,11 +75,19 @@ class Sidebar extends React.Component {
         <input type="submit" value="Create Group!"/>
       </form>
     ) : "";
-
+    let groups = this.props.groups
+    let allGroups = (
+      <div className="all-groups group-sidebar-item" onClick={
+        (event) => (this.changeActiveGroup(event, groups))
+      }>
+        <li>All Groups</li>
+      </div>
+    )
     return(
       <div>
         <div className="sidebar-box box">
-          {group_names}
+          {allGroups}
+          {groupSidebarItems}
           <button onClick={this.toggleAddGroup}>{this.state.addGroup ? "Cancel" : "Add Group"}</button>
           {addGroupInput}
         </div>
