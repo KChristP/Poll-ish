@@ -1,6 +1,7 @@
 import React from 'react';
 import MainPanelContainer from './main_panel_container';
 import GroupSidebarItem from './group_sidebar_item'
+import PollFormContainer from './poll_form_container'
 
 class Sidebar extends React.Component {
   constructor(props){
@@ -56,6 +57,8 @@ class Sidebar extends React.Component {
     this.setState(Object.assign({}, this.state, {groupToAdd: value}))
   }
 
+
+
   render(){
 
     let groupSidebarItems = "Loading..."
@@ -75,20 +78,31 @@ class Sidebar extends React.Component {
         <input type="submit" value="Create Group!"/>
       </form>
     ) : "";
+
     let groups = this.props.groups
     let allGroups = (
       <div className="all-groups group-sidebar-item" onClick={
         (event) => (this.changeActiveGroup(event, groups))
       }>
-        <li>All Groups</li>
+        <li className="sidebar-list-item">All Groups</li>
       </div>
     )
+
+    let defaultGroupId = Object.keys(this.props.groups).sort()[0]
+
+    // let defaultGroup = this.props.groups[defaultGroupId]
+
     return(
       <div>
         <div className="sidebar-box box">
+          <PollFormContainer groupId={defaultGroupId}/>
           {allGroups}
           {groupSidebarItems}
-          <button onClick={this.toggleAddGroup}>{this.state.addGroup ? "Cancel" : "Add Group"}</button>
+          <button
+            onClick={this.toggleAddGroup}
+            className="add-group-sidebar-button">
+            {this.state.addGroup ? "Cancel" : "Add Group"}
+          </button>
           {addGroupInput}
         </div>
         <div className="main-panel-box">

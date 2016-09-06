@@ -52,7 +52,7 @@ class Api::PollishesController < ApplicationController
 
   def ensure_single_live
     return if poll_params[:live] == false
-    user_id = Group.find_by_id(poll_params[:group_id])
+    user_id = Group.find_by_id(poll_params[:group_id]).user.id
     polls = User.find_by_id(user_id).pollishes
     (polls - [@poll]).each do |poll|
       if poll.live == true

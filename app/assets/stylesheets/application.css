@@ -6,6 +6,11 @@ html, body, section, article, h1, h2, p, div, header, a {
   /*font-family: sans-serif;*/
   font-family: 'Roboto', sans-serif;
 }
+
+body {
+  font-family: "Lucida Grande","Lucida Sans","Lucida Sans Unicode",Sans-serif;
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -45,7 +50,7 @@ html, body, section, article, h1, h2, p, div, header, a {
   bottom: 0;
   left: 0;
   width: 175px;
-  background: #ccc;
+  /* background: #ccc; */
   /* border: 1px solid red; */
   display: flex;
   justify-content: flex-start;
@@ -113,7 +118,7 @@ html, body, section, article, h1, h2, p, div, header, a {
 }
 
 .login-submit:hover {
-
+  cursor: pointer;
   font-weight: bold;
 
 }
@@ -139,6 +144,7 @@ html, body, section, article, h1, h2, p, div, header, a {
   height: 75px;
 }
 .login-box:hover {
+  cursor: pointer;
   background-color: #1f4360;
 }
 
@@ -167,18 +173,23 @@ html, body, section, article, h1, h2, p, div, header, a {
 }
 
 .group-sidebar-item {
-  padding: 20px;
+  padding: 5px 20px;
   list-style: none;
+  /* background-color: #e9eff4; */
 }
 .poll-item-box {
   padding: 10px 25px;
+  background-color: #e9eff4;
 }
 .poll-item-box:hover {
+  cursor: pointer;
   background-color: #d8e3ec
 }
 .poll-item-title {
   display: flex;
   justify-content: space-between;
+  font-size: 14px;
+  color: #203349;
 }
 .poll-detail-box{
 
@@ -195,13 +206,17 @@ html, body, section, article, h1, h2, p, div, header, a {
   font-size: 14px;
   display: flex;
   justify-content: space-between;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
 }
 
 .group-item-box {
-  margin-bottom: 10px
+  /* margin-bottom: 10px; */
+  margin-top: 20px;
 }
 
 .group-item-title:hover {
+  cursor: pointer;
   background-color: #bad0e0;
 }
 .new-poll-form-itself {
@@ -211,4 +226,76 @@ html, body, section, article, h1, h2, p, div, header, a {
 
 .new-poll-form-box {
   width: 250px;
+}
+
+.sidebar-list-item {
+  padding: 10px;
+  background-color: #e9eff4;
+  border-radius: 5px;
+}
+.sidebar-list-item:hover {
+  cursor: pointer;
+  background-color: #ccdce8;
+}
+
+.new-poll-button {
+  background-color: #d95347;
+  box-shadow: none;
+  border: none;
+  padding: 10px 20px;
+  margin: 20px;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  font-style: normal;
+}
+.new-poll-button:hover {
+  cursor: pointer;
+  font-style: italic;
+}
+
+.main-panel-box em {
+  background-color: #ccdce8;
+  padding: 5px 20px;
+  margin: 0;
+  border-radius: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #aaa;
+  font-size: 12px;
+}
+.main-panel-box em:hover {
+  background-color: #bad0e0;
+  cursor: pointer;
+  color: black;
+}
+
+.add-group-sidebar-button {
+  background-color: #ccdce8;
+  padding: 10px 20px;
+  margin: 5px 20px;
+  border-radius: 3px;
+  color: #aaa;
+  font-size: 12px;
+  border: none;
+  width: 130px;
+  font-weight: bold;
+}
+.add-group-sidebar-button:hover {
+  background-color: #bad0e0;
+  cursor: pointer;
+  color: black;
+}
+
+.group-item-button-box {
+  display: flex;
+  justify-content: flex-end;
+}
+.fa-pencil-square-o {
+  width: 20px;
+}
+
+.group-title-and-edit {
+  display: flex;
 }

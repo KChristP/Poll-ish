@@ -54,7 +54,7 @@ class SessionForm extends React.Component {
 	}
 
   autofill(){
-    this.props.login({user: {email: "MasterPollster@poll-ish.com", password: "password"}})
+    this.props.login({user: {email: "Guest@poll-ish.com", password: "password"}})
   }
 
   render() {

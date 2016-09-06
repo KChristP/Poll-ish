@@ -54,10 +54,14 @@ class GroupItem extends React.Component {
     return(
       <div className="group-item-box">
         <div className="group-item-title">
-          {this.props.group.name}
-          <div>{editInput}</div>
-          <button onClick={this.handleDestroyGroup}>Delete Group</button>
-          <button onClick={this.toggleEditInput}>{this.state.editInputOpen ? "Cancel" : "Edit"}</button>
+          <div className="group-title-and-edit">
+            <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={this.toggleEditInput}></i>
+            <div>{this.state.editInputOpen ? "" : this.props.group.name}</div>
+            {editInput}
+          </div>
+          <div className="group-item-button-box">
+            <button onClick={this.handleDestroyGroup}>Delete Group</button>
+          </div>
         </div>
         {this_groups_poll_items}
 
@@ -68,3 +72,6 @@ class GroupItem extends React.Component {
 }
 
 export default GroupItem;
+
+
+// <button onClick={this.toggleEditInput}>{this.state.editInputOpen ? "Cancel" : "Edit"}</button>

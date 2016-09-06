@@ -68,11 +68,11 @@ class PollForm extends React.Component {
     }
     return(
       <div>
-        <button
-          id="new-poll-button"
+        <em
+          className="new-poll-button"
           onClick={this._handleNewPollClick}>
-          Add New Poll
-        </button>
+          Create Poll!
+        </em>
         <Modal
           isOpen={this.state.modalOpen}
           onRequestClose={this._onModalClose}
