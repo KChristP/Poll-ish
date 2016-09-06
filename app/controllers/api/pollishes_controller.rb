@@ -21,7 +21,11 @@ class Api::PollishesController < ApplicationController
     if same_q_and_a?
       manage_live
       manage_group_id
-      render :show
+      if @poll.save
+        render :show
+      else
+        render json: @poll.errors.full_messages
+      end
       return
     else
       compile_new_poll_from_params
@@ -80,8 +84,9 @@ class Api::PollishesController < ApplicationController
 
   def same_q_and_a?
     db_poll = Pollish.find_by_id(poll_params[:id])
+    db_answers = db_poll.answers.map {|answer| answer.body}
     db_poll.questions[0].body == params[:poll][:question][:body] &&
-      db_poll.answers.sort == params[:poll][:question][:answers].sort
+      db_answers.sort == params[:poll][:question][:answers].sort
   end
 
   def manage_live
@@ -91,8 +96,8 @@ class Api::PollishesController < ApplicationController
   end
 
   def manage_group_id
-    if poll_params[:group_id] != @poll.group_id
-      group = Group.find_by_id(poll_params[:id])
+    if poll_params[:group_id].to_i != @poll.group_id
+      group = Group.find_by_id(poll_params[:group_id])
       @poll.group = group
     end
   end
