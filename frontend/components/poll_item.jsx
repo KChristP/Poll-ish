@@ -27,15 +27,18 @@ class PollItem extends React.Component {
         <div className="poll-item-title">
           <div onClick={this.showPollDetail}>{this.props.poll.question.body}</div>
           <div className="poll-item-button-box">
-            <i className="fa fa-power-off"
-              aria-hidden="true">{
-                this.props.poll.live ? "Live" : "Make Live"}
-            </i>
-            <i className="fa fa-trash-o"
-              aria-hidden="true"
-              onClick={this.clickToDestroy}>
-              Delete
-            </i>
+            <div className="poll-item-button-sub-box">
+              <i className="fa fa-power-off"
+                aria-hidden="true">
+              </i>
+              <p className="fa-text">{this.props.poll.live ? "Live" : "Make Live"}</p>
+            </div>
+            <div onClick={this.clickToDestroy} className="poll-item-button-sub-box">
+              <i className="fa fa-trash-o"
+                aria-hidden="true">
+              </i>
+              <p className="fa-text">Delete</p>
+            </div>
             <PollFormUpdateContainer poll={this.props.poll}/>
           </div>
         </div>

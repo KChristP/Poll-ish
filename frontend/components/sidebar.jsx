@@ -73,9 +73,14 @@ class Sidebar extends React.Component {
     }
 
     let addGroupInput = this.state.addGroup ? (
-      <form onSubmit={this.handleGroupSubmit}>
-        <input type="text" value={this.state.groupToAdd} onChange={this.handleNameChange}/>
-        <input type="submit" value="Create Group!"/>
+      <form onSubmit={this.handleGroupSubmit}
+        className="add-group-sidebar-form">
+        <input type="text"
+          value={this.state.groupToAdd}
+          className="add-group-sidebar-input"
+          onChange={this.handleNameChange}/>
+        <input type="submit" value="Create Group!"
+          className="add-group-sidebar-submit"/>
       </form>
     ) : "";
 

@@ -59,12 +59,14 @@ class GroupItem extends React.Component {
             <div>{this.state.editInputOpen ? "" : this.props.group.name}</div>
             {editInput}
           </div>
-          <div className="group-item-button-box">
+          <div
+            className="group-item-button-sub-box, group-item-button-box"
+            onClick={this.handleDestroyGroup}
+          >
             <i className="fa fa-trash-o"
-              aria-hidden="true"
-              onClick={this.handleDestroyGroup}>
-              Delete Group
+              aria-hidden="true">
             </i>
+            <p className="fa-text">Delete Group</p>
           </div>
         </div>
         {this_groups_poll_items}

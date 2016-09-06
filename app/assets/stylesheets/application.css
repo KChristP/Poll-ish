@@ -5,6 +5,7 @@ html, body, section, article, h1, h2, p, div, header, a {
   padding: 0px;
   /*font-family: sans-serif;*/
   font-family: 'Roboto', sans-serif;
+  /* align-items: center; */
 }
 
 body {
@@ -43,15 +44,11 @@ body {
 }
 .sidebar-box {
   position: absolute;
-  /*top: -250px;*/
   right: 0;
-  /* height: 100%; */
   top: 75px;
   bottom: 0;
   left: 0;
   width: 175px;
-  /* background: #ccc; */
-  /* border: 1px solid red; */
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -193,6 +190,7 @@ body {
   justify-content: space-between;
   font-size: 14px;
   color: #203349;
+  align-items: center;
 }
 .poll-detail-box{
 
@@ -205,12 +203,13 @@ body {
   /* color: #203349; */
   background: #ccdce8;
   padding: 20px;
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 14px;
   display: flex;
   justify-content: space-between;
   border-top-left-radius: 1px;
   border-top-right-radius: 1px;
+  /* align-items: center; */
 }
 
 .group-item-box {
@@ -294,6 +293,7 @@ body {
 .group-item-button-box {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 .fa-pencil-square-o {
   width: 20px;
@@ -301,10 +301,13 @@ body {
 
 .group-title-and-edit {
   display: flex;
+  font-weight: bold;
+  align-items: center;
 }
 
 .fa {
   padding: 5px;
+  display: flex;
 }
 
 .fa:hover {
@@ -334,3 +337,25 @@ body {
   border-radius: 3px;
   color: white;
 }
+
+.fa-text {
+  font-family: sans-serif;
+}
+.fa-text:hover {
+  font-weight: bold;
+}
+.poll-item-button-sub-box {
+  display: flex;
+  align-items: center;
+}
+.poll-item-button-sub-box:hover {
+  font-weight: bold;
+}
+
+.sidebar-box em:hover {
+  padding: 9px 19px;
+  border: 1px solid red;
+}
+.add-group-sidebar-form {margin: 20px;}
+.add-group-sidebar-submit {border: none;background-color: #255073;color: white;font-size: 12px;padding: 5px 10px;border-radius: 3px;}
+.add-group-sidebar-input {margin: 0 0 10px;}

@@ -67,12 +67,13 @@ class PollFormUpdate extends React.Component {
       answerInputs.push(<input id={i} type="text" value={this.state.answers[i]} onChange={this.handleAnswerChange} key={"abc" + i}/>)
     }
     return(
-      <div>
-        <i className="fa fa-pencil-square-o"
-          aria-hidden="true" id="edit-poll-button"
-          onClick={this._handleUpdatePollClick}>
-          Edit
-        </i>
+      <div className="poll-item-button-sub-box" onClick={this._handleUpdatePollClick}>
+        <div className="poll-item-button-sub-box">
+          <i className="fa fa-pencil-square-o"
+            aria-hidden="true" id="edit-poll-button">
+          </i>
+          <p className="fa-text">Edit</p>
+        </div>
         <Modal
           isOpen={this.state.modalOpen}
           onRequestClose={this._onModalClose}
