@@ -3,7 +3,6 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import HomeContainer from './home_container'
 import SessionFormContainer from './session_form_container';
-import LoggedOut from './logged_out'
 import MainPanel from './main_panel'
 //
 class AppRouter extends React.Component{

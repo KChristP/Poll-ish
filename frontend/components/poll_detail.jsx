@@ -1,5 +1,5 @@
 import React from 'react';
-//TODO this component should show
+
 
 class PollDetail extends React.Component {
   constructor(props){

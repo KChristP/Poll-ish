@@ -14,8 +14,9 @@ class Api::PollishesController < ApplicationController
     end
   end
 
-  def update#TODO need to add a compare function to compare Q&A of params vs Q&A of db object. if different do the swap as written
-    #if not different - just swap group_id or live status and skip this (so we don't lose poll vote data every time we go live)
+  #have a compare function to compare Q&A of params vs Q&A of db object. if different do the swap as written
+  #if not different - just swap group_id or live status and skip this (so we don't lose poll vote data every time we go live)
+  def update
     @poll = Pollish.find_by_id(poll_params[:id])
     if same_q_and_a?
       manage_live

@@ -13,7 +13,8 @@ import {
 
 export default ({getState, dispatch}) => next => action => {
   const successIndexCallback = polls => dispatch(receiveAllPolls(polls));
-  const successPollCallback = poll => dispatch(receivePoll(poll));
+  const successPollCallback = poll => {
+    dispatch(receivePoll(poll))};
   const successRemoveCallback = poll => {
     dispatch(removePoll(poll));
   };

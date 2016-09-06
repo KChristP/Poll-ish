@@ -11,6 +11,7 @@ class PollItem extends React.Component {
     }
     this.clickToDestroy = this.clickToDestroy.bind(this)
     this.showPollDetail = this.showPollDetail.bind(this)
+    this.handleDragEvent = this.handleDragEvent.bind(this)
   }
   clickToDestroy(e){
     this.props.destroyPoll(this.props.poll)
@@ -20,10 +21,14 @@ class PollItem extends React.Component {
     this.setState({showDetail: !this.state.showDetail})
   }
 
+  handleDragEvent(e) {
+    e.dataTransfer.setData("object", JSON.stringify(this.props.poll));
+  }
+
   render(){
     const pollDetail = <PollDetail poll={this.props.poll} key={this.props.poll.id}/>
     return(
-      <div className="poll-item-box">
+      <div className="poll-item-box" draggable="true" onDragStart={this.handleDragEvent} id={''}>
         <div className="poll-item-title">
           <div onClick={this.showPollDetail}>{this.props.poll.question.body}</div>
           <div className="poll-item-button-box">

@@ -7,11 +7,14 @@ const PollReducer = (state = {}, action) => {
 
       return merge({}, action.polls, state);
     case PollConstants.RECEIVE_POLL:
-      return merge({}, state, action.poll);
+      let iD = action.poll;
+      let thesePolls = merge({}, state);
+      delete thesePolls[iD];
+      return merge(thesePolls, action.poll);
     case PollConstants.REMOVE_POLL:
       let newPolls = merge({}, state)
       let id = parseInt(Object.keys(action.poll)[0])
-      delete newPolls[id]
+      delete newPolls[id];
       return newPolls;
     default:
       return state;

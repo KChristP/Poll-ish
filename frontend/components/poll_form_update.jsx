@@ -35,9 +35,25 @@ class PollFormUpdate extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    let answers = this.state.answers.filter(answer => answer !== undefined)
+    let answers = this.state.answers.filter(answer => {
+      return (answer !== undefined) && (answer !== "")
+    })
     let question = {body: this.state.question, answers: answers}
-    this.props.updatePoll({poll: {id: this.props.poll.id, live: false, group_id: this.props.poll.group_id, question: question}})
+    if((this.props.poll.question.answers.map(answer => answer.body).sort() !== answers.sort()) ||
+      (this.props.poll.question.body !== this.state.question)
+    ) {
+      this.props.updatePoll(
+        {poll: {
+          id: this.props.poll.id,
+          live: false,
+          group_id: this.props.poll.group_id,
+          question: question}
+        }
+      )
+      let pollData = {};
+      pollData[this.props.poll.id] = this.props.poll;
+      this.props.removePoll(pollData) //again this is necessary to make data form match what the poll reducer expects from server
+    }
     this.setState(Object.assign({}, this.state, {modalOpen: false}))
   }
 
