@@ -48,7 +48,7 @@ class GroupItem extends React.Component {
     this.props.destroyGroup(this.props.group)
   }
 
-  handleDragover(e){//TODO
+  handleDragover(e){
     e.preventDefault()
   }
 
@@ -56,7 +56,7 @@ class GroupItem extends React.Component {
 //this is hacky. I update the poll sent from the drag event with this groups Id,
 //however this update does not remove the previous of the poll from state(why? shouldnt reducer's merge copy a poll with same id over itself?)
 //so I also send a remove poll request for the poll with the old group_id
-  handleDrop(e){//TODO t
+  handleDrop(e){
     e.preventDefault()
     let poll = JSON.parse(e.dataTransfer.getData("object"));
     let pollData = {};
@@ -79,7 +79,7 @@ class GroupItem extends React.Component {
       </form>
     ) : "";
     return(
-      <div className="group-item-box" onDragOver={this.handleDragover} onDrop={this.handleDrop}>//TODO
+      <div className="group-item-box" onDragOver={this.handleDragover} onDrop={this.handleDrop}>
         <div className="group-item-title">
           <div className="group-title-and-edit">
             <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={this.toggleEditInput}></i>
