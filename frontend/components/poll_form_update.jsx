@@ -68,11 +68,11 @@ class PollFormUpdate extends React.Component {
     }
     return(
       <div>
-        <button
-          id="edit-poll-button"
+        <i className="fa fa-pencil-square-o"
+          aria-hidden="true" id="edit-poll-button"
           onClick={this._handleUpdatePollClick}>
           Edit
-        </button>
+        </i>
         <Modal
           isOpen={this.state.modalOpen}
           onRequestClose={this._onModalClose}
@@ -94,3 +94,11 @@ class PollFormUpdate extends React.Component {
 }
 
 export default PollFormUpdate;
+
+
+
+// <button
+//   id="edit-poll-button"
+//   onClick={this._handleUpdatePollClick}>
+//   Edit
+// </button>

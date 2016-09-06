@@ -61,6 +61,9 @@ body {
   position: absolute;
   top: 75px;
   left: 200px;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
 }
 
 .login-link, .signup-link {
@@ -298,4 +301,36 @@ body {
 
 .group-title-and-edit {
   display: flex;
+}
+
+.fa {
+  padding: 5px;
+}
+
+.fa:hover {
+  font-weight: bold;
+}
+
+.poll-form-label {
+  padding: 10px;
+}
+
+.poll-form-input {margin: 5px;padding: 5px;}
+
+.poll-form-add-answer {
+  font-size: 12px;
+  padding: 5px 10px;
+  background-color: #203349;
+  color: white;
+  width: 120px;
+  border-radius: 3px;
+}
+
+.poll-submit-button {
+  background-color: #255073;
+  border: none;
+  padding: 5px 10px;
+  margin: 20px 0;
+  border-radius: 3px;
+  color: white;
 }

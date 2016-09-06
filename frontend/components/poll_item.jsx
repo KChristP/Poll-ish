@@ -27,8 +27,15 @@ class PollItem extends React.Component {
         <div className="poll-item-title">
           <div onClick={this.showPollDetail}>{this.props.poll.question.body}</div>
           <div className="poll-item-button-box">
-            <button>{this.props.poll.live ? "Live" : "Make Live"}</button>
-            <button onClick={this.clickToDestroy}>Delete</button>
+            <i className="fa fa-power-off"
+              aria-hidden="true">{
+                this.props.poll.live ? "Live" : "Make Live"}
+            </i>
+            <i className="fa fa-trash-o"
+              aria-hidden="true"
+              onClick={this.clickToDestroy}>
+              Delete
+            </i>
             <PollFormUpdateContainer poll={this.props.poll}/>
           </div>
         </div>
@@ -39,3 +46,9 @@ class PollItem extends React.Component {
 }
 
 export default PollItem;
+
+
+
+
+// <button>{this.props.poll.live ? "Live" : "Make Live"}</button>
+// <button onClick={this.clickToDestroy}>Delete</button>

@@ -64,7 +64,13 @@ class PollForm extends React.Component {
   render(){
     let answerInputs = [];
     for(let i = 0; i < this.state.answerCount; i++){
-      answerInputs.push(<input id={i} type="text" value={this.state.answers[i]} onChange={this.handleAnswerChange} key={"abc" + i}/>)
+      answerInputs.push(<input
+        id={i}
+        className="poll-form-input"
+        placeholder="Answer"
+        type="text"
+        value={this.state.answers[i]}
+        onChange={this.handleAnswerChange} key={"abc" + i}/>)
     }
     return(
       <div>
@@ -81,10 +87,19 @@ class PollForm extends React.Component {
           <button onClick={this._onModalClose}>Close</button>
           <div className="new-poll-form-box">
             <form className="new-poll-form-itself" onSubmit={this.handleSubmit}>
-              Question <input type="text" value={this.state.question} onChange={this.handleQuestionChange}/>
+              <label className="poll-form-label">Question:</label>
+              <input
+                type="text"
+                className="poll-form-input"
+                value={this.state.question}
+                placeholder="Question"
+                onChange={this.handleQuestionChange}/>
+              <label className="poll-form-label">Answers:</label>
               {answerInputs}
-              <div onClick={this.addAnswerField}>Add Another Answer!</div>
-              <input type="submit" value="Submit New Poll!" />
+              <div
+                className="poll-form-add-answer"
+                onClick={this.addAnswerField}>Add Another Answer!</div>
+              <input type="submit" value="Submit New Poll!" className="poll-submit-button"/>
             </form>
           </div>
         </Modal>

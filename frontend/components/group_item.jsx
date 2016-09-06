@@ -60,7 +60,11 @@ class GroupItem extends React.Component {
             {editInput}
           </div>
           <div className="group-item-button-box">
-            <button onClick={this.handleDestroyGroup}>Delete Group</button>
+            <i className="fa fa-trash-o"
+              aria-hidden="true"
+              onClick={this.handleDestroyGroup}>
+              Delete Group
+            </i>
           </div>
         </div>
         {this_groups_poll_items}
@@ -75,3 +79,5 @@ export default GroupItem;
 
 
 // <button onClick={this.toggleEditInput}>{this.state.editInputOpen ? "Cancel" : "Edit"}</button>
+
+// <button onClick={this.handleDestroyGroup}>Delete Group</button>
