@@ -20,7 +20,7 @@ class VoteForm extends React.Component {
 
   render(){
     let question = ""
-    let answerChoices = "loading"
+    let answerChoices = "This user does not currently have any live polls"
     if(this.props.poll){
       question = (<h1>{this.props.poll.question.body}</h1>);
       answerChoices = this.props.poll.question.answers.map((answer) => (
@@ -28,15 +28,14 @@ class VoteForm extends React.Component {
           <input type="radio" name={this.props.poll.id} value={answer.id}/>
         </label>
       ));
+      answerChoices.push(<input type="submit" value="Submit Vote!"/>)
     }
 
     return(
       <div className="vote-form-box">
-        vote form
         <form onSubmit={this.handleSubmit}>
           {question}
           {answerChoices}
-          <input type="submit" value="Submit Vote!"/>
         </form>
       </div>
     )

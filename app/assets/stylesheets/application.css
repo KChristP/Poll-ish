@@ -359,3 +359,7 @@ body {
 .add-group-sidebar-form {margin: 20px;}
 .add-group-sidebar-submit {border: none;background-color: #255073;color: white;font-size: 12px;padding: 5px 10px;border-radius: 3px;}
 .add-group-sidebar-input {margin: 0 0 10px;}
+
+.live {
+  color: darkorange;
+}

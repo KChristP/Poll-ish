@@ -14,7 +14,11 @@ class Api::UsersController < ApplicationController
   def show#This is kinda weird. session controller calls the users/show view, whereas this users#show method calls pollishes show view
     @user = User.find_by_id(params[:id])
     @poll = @user.pollishes.where(live: true)[0]
-    render "api/pollishes/show"
+    if @poll
+      render "api/pollishes/show"
+    else
+      render json: "No Live Poll's Found"
+    end
   end
 
   def destroy

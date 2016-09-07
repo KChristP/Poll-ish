@@ -33,6 +33,20 @@ class Api::PollishesController < ApplicationController
       end
     end
 
+    if poll_params[:make_live] == "true"
+      @poll.live = true
+      @poll.save
+      ensure_single_live
+      render :show
+      return
+    elsif poll_params[:make_live] == "false"
+      @poll.live = false
+      @poll.save
+      ensure_single_live
+      render :show
+      return
+    end
+
     if same_q_and_a?
       manage_live
       manage_group_id
@@ -67,12 +81,12 @@ class Api::PollishesController < ApplicationController
   private
 
   def poll_params
-    params.require(:poll).permit(:answer_id, :place_vote, :group_id, :live, :id, question: [:body, :id, :question_id, answers: [:body, :id, :live]])
+    params.require(:poll).permit(:make_live, :answer_id, :place_vote, :group_id, :live, :id, question: [:body, :id, :question_id, answers: [:body, :id, :live]])
   end
 
   def ensure_single_live
     return if poll_params[:live] == false
-    user_id = Group.find_by_id(poll_params[:group_id]).user.id
+    user_id = Group.find_by_id(@poll.user.id)
     polls = User.find_by_id(user_id).pollishes
     (polls - [@poll]).each do |poll|
       if poll.live == true

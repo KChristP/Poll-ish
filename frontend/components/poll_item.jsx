@@ -1,6 +1,7 @@
 import React from 'react';
 import PollDetail from './poll_detail'
 import PollFormUpdateContainer from './poll_form_update_container'
+import merge from 'lodash/merge';
 
 
 class PollItem extends React.Component {
@@ -12,6 +13,7 @@ class PollItem extends React.Component {
     this.clickToDestroy = this.clickToDestroy.bind(this)
     this.showPollDetail = this.showPollDetail.bind(this)
     this.handleDragEvent = this.handleDragEvent.bind(this)
+    this.handleMakeLive = this.handleMakeLive.bind(this)
   }
 
   componentDidMount(){
@@ -38,7 +40,19 @@ class PollItem extends React.Component {
     e.dataTransfer.setData("object", JSON.stringify(this.props.poll));
   }
 
+  handleMakeLive(){
+    let pollToSend = merge({}, this.props.poll)
+    pollToSend.live = !this.props.poll.live
+    pollToSend.make_live = !this.props.poll.live
+    this.props.updatePoll({poll: pollToSend})
+    if (this.props.poll.live === false){
+      this.props.newLive({id: this.props.poll.id})
+    }
+  }
+
+
   render(){
+    const thisIsLive = (this.props.poll.live && (this.props.live.id === this.props.poll.id))
     const pollDetail = <PollDetail poll={this.props.poll} key={this.props.poll.id}/>
     return(
       <div className="poll-item-box" draggable="true" onDragStart={this.handleDragEvent} id={''}>
@@ -46,10 +60,10 @@ class PollItem extends React.Component {
           <div onClick={this.showPollDetail}>{this.props.poll.question.body}</div>
           <div className="poll-item-button-box">
             <div className="poll-item-button-sub-box">
-              <i className="fa fa-power-off"
+              <i className={thisIsLive ? "fa fa-power-off live" : "fa fa-power-off"}
                 aria-hidden="true">
               </i>
-              <p className="fa-text">{this.props.poll.live ? "Live" : "Make Live"}</p>
+              <p className={thisIsLive ? "fa-text live" : "fa-text"} onClick={this.handleMakeLive}>{thisIsLive ? "Live" : "Make Live"}</p>
             </div>
             <div onClick={this.clickToDestroy} className="poll-item-button-sub-box">
               <i className="fa fa-trash-o"
