@@ -9,7 +9,9 @@ import {
   ajaxForAllPolls,
   ajaxForCreatePoll,
   ajaxForDestroyPoll,
-  ajaxForUpdatePoll} from '../util/poll_util';
+  ajaxForUpdatePoll,
+  ajaxForRequestPoll
+} from '../util/poll_util';
 
 export default ({getState, dispatch}) => next => action => {
   const successIndexCallback = polls => dispatch(receiveAllPolls(polls));
@@ -35,6 +37,9 @@ export default ({getState, dispatch}) => next => action => {
       return next(action);
     case PollConstants.UPDATE_POLL:
       ajaxForUpdatePoll(action.poll, successPollCallback, errorCallback);
+      return next(action);
+    case PollConstants.REQUEST_SINGLE_POLL:
+      ajaxForRequestPoll(action.poll_id, successPollCallback, errorCallback);
       return next(action);
     default:
       return next(action);

@@ -5,7 +5,8 @@ export const PollConstants = {
   RECEIVE_POLL: "RECEIVE_POLL",
   DESTROY_POLL: "DESTROY_POLL",
   REMOVE_POLL: "REMOVE_POLL",
-  UPDATE_POLL: "UPDATE_POLL"
+  UPDATE_POLL: "UPDATE_POLL",
+  REQUEST_SINGLE_POLL: "REQUEST_SINGLE_POLL"
 };
 
 export const requestAllPolls = (user_id) => {
@@ -15,10 +16,10 @@ export const requestAllPolls = (user_id) => {
   });
 }
 
-// export const requestPollsByGroup = (group) => ({
-//   type: PollConstants.REQUEST_ALL_POLLS
-//   group
-// });
+export const requestSinglePoll = (poll_id) => ({
+  type: PollConstants.REQUEST_SINGLE_POLL,
+  poll_id
+});
 
 export const receiveAllPolls = (polls) => ({
   type: PollConstants.RECEIVE_ALL_POLLS,

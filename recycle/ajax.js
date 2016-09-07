@@ -65,6 +65,15 @@ $.ajax({
   success
 })
 
+//This is working format for ajax to cast a vote(sept 6 10pm)
+let success = (data) => console.log(data)
+$.ajax({
+  type: "PATCH",
+  url: "api/pollishes/1",
+  data: {poll: {place_vote: true, id: 1, answer_id: 1}},
+  success
+})
+
 // Started POST "/api/pollishes" for 127.0.0.1 at 2016-09-04 13:48:43 -0700
 // Processing by Api::PollishesController#create as JSON
 //   Parameters: {"poll"=>{"live"=>"false", "question"=>{"body"=>"Did it work?", "answers"=>["Yes", "No", "Maybe", "I don't know"]}}}

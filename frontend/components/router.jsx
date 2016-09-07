@@ -4,6 +4,7 @@ import App from './app';
 import HomeContainer from './home_container'
 import SessionFormContainer from './session_form_container';
 import MainPanel from './main_panel'
+import VoteFormContainer from './vote_form_container'
 //
 class AppRouter extends React.Component{
   constructor(props){
@@ -33,6 +34,7 @@ class AppRouter extends React.Component{
           <IndexRoute component={HomeContainer} onEnter={this._ensureLoggedIn}/>
           <Route path="/login" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
           <Route path="/signup" component={ SessionFormContainer } onEnter={this._redirectIfLoggedIn}/>
+          <Route path="/users/:user_id" component={ VoteFormContainer }/>
         </Route>
       </Router>
     );

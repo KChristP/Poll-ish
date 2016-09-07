@@ -13,6 +13,19 @@ class PollItem extends React.Component {
     this.showPollDetail = this.showPollDetail.bind(this)
     this.handleDragEvent = this.handleDragEvent.bind(this)
   }
+
+  componentDidMount(){
+    var pusher = new Pusher('7c0afd3d50285fa5e5cf', {
+     encrypted: true
+   });
+   let that = this
+   var channel = pusher.subscribe('poll_' + this.props.poll.id);
+   channel.bind('vote_added', function(data) {
+     that.props.requestSinglePoll(data.poll_id);
+   });
+  }
+
+
   clickToDestroy(e){
     this.props.destroyPoll(this.props.poll)
   }

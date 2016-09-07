@@ -38,3 +38,12 @@ export const ajaxForUpdatePoll = function(poll, success, error) {
     error
   })
 }
+export const ajaxForRequestPoll = function(poll_id, success, error) {
+  let url = "api/pollishes/" + poll_id
+  $.ajax({
+    type: "GET",
+    url: url,
+    success,
+    error
+  })
+}
