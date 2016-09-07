@@ -7,3 +7,12 @@ export const ajaxForVotePoll = function(user_id, success, error) {
     error
   })
 }
+export const ajaxForCastVote = function(vote, success, error) {
+  let url = "api/pollishes/" + vote.poll.id
+  $.ajax({
+    type: "PATCH",
+    url: "api/pollishes/1",
+    data: vote,
+    success
+  })
+}

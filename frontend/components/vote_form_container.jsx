@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {requestPoll} from '../actions/vote_actions'
+import {requestPoll, castVote} from '../actions/vote_actions'
 
 import VoteForm from './vote_form';
 
@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  requestPoll: (user_id) => dispatch(requestPoll(user_id))
+  requestPoll: (user_id) => dispatch(requestPoll(user_id)),
+  castVote: (vote => dispatch(castVote(vote)))
 });
 
 export default connect(
