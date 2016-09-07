@@ -5,11 +5,10 @@
       json.set! :group_id, poll.group_id
       json.set! :live, poll.live
       json.set! :question do
-        # debugger
         if poll.questions.first
           json.set! :body, poll.questions.first.body ? poll.questions.first.body : nil
           json.set! :answers do
-            json.array! poll.answers, :body, :votes
+            json.array! poll.answers, :body, :votes, :id
           end
         else
           json.null!

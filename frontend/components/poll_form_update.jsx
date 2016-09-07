@@ -9,7 +9,7 @@ class PollFormUpdate extends React.Component {
       modalOpen: false,
       id: this.props.poll.id,
       question: this.props.poll.question.body,
-      answers: this.props.poll.question.answers.map((answer) => answer.body),
+      answers: this.props.poll.question.answers.concat().sort().map((answer) => answer.body),//concat is necessary because sort() mutates
       answerCount: this.props.poll.question.answers.length
     };
     this._handleUpdatePollClick = this._handleUpdatePollClick.bind(this)
@@ -35,10 +35,18 @@ class PollFormUpdate extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
+    let newAnswers = [];
+    this.props.poll.question.answers.concat().sort().forEach((answer, index) => {
+      answer.body = this.state.answers[index];
+      newAnswers.push(answer);
+    })
+
+
     let answers = this.state.answers.filter(answer => {
       return (answer !== undefined) && (answer !== "")
     })
-    let question = {body: this.state.question, answers: answers}
+    let question = {body: this.state.question, answers: newAnswers}
+    // let question = {body: this.state.question, answers: answers}//changing to reflect new full object sending...
     if((this.props.poll.question.answers.map(answer => answer.body).sort() !== answers.sort()) ||
       (this.props.poll.question.body !== this.state.question)
     ) {
@@ -112,7 +120,11 @@ class PollFormUpdate extends React.Component {
 
 export default PollFormUpdate;
 
-
+// poll.question.answers.forEach(answer = {
+//   answer.body =
+//
+//
+// })
 
 // <button
 //   id="edit-poll-button"

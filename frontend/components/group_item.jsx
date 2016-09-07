@@ -61,9 +61,9 @@ class GroupItem extends React.Component {
     let poll = JSON.parse(e.dataTransfer.getData("object"));
     let pollData = {};
     pollData[poll.id] = poll;//This step is necessary so data will be in same shape poll reducer otherwise expects from server for remove poll
-    let answers = poll.question.answers.map(answer => answer.body);
-    poll.group_id = this.props.group.id;
-    poll.question.answers = answers;
+    // let answers = poll.question.answers.map(answer => answer.body);TODO tues
+    // poll.group_id = this.props.group.id;TODO tues
+    // poll.question.answers = answers;TODO tues took all this out to send full objects, need to get poll form update to do the same, and get controller to parse full objects rather than array of strings
     this.props.updatePoll({poll: poll});
     this.props.removePoll(pollData);
   }

@@ -85,8 +85,20 @@ class Api::PollishesController < ApplicationController
   def same_q_and_a?
     db_poll = Pollish.find_by_id(poll_params[:id])
     db_answers = db_poll.answers.map {|answer| answer.body}
+    debugger
     db_poll.questions[0].body == params[:poll][:question][:body] &&
-      db_answers.sort == params[:poll][:question][:answers].sort
+      same_a?(db_poll)#TODO tues need to change this to reflect answer objects rather than stringSTARTING POINT
+  end
+
+  def same_a?(db_poll)#TODO tues
+    db_poll.answers.all? do |db_answer|
+      id = db_answer.id.to_s
+      frontend_answer = params[:poll][:question][:answers][id]
+      frontend_answer &&
+      db_answer.body == frontend_answer[:body] &&
+      db_answer.votes == frontend_answer[:votes]
+      debugger
+    end
   end
 
   def manage_live
