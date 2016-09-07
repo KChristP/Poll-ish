@@ -2,7 +2,7 @@ import React from 'react';
 import PollDetail from './poll_detail'
 import PollFormUpdateContainer from './poll_form_update_container'
 import merge from 'lodash/merge';
-
+import PollChart from './poll_chart'
 
 class PollItem extends React.Component {
   constructor(props){
@@ -53,7 +53,9 @@ class PollItem extends React.Component {
 
   render(){
     const thisIsLive = (this.props.poll.live && (this.props.live.id === this.props.poll.id))
-    const pollDetail = <PollDetail poll={this.props.poll} key={this.props.poll.id}/>
+    // const pollDetail = <PollDetail poll={this.props.poll} key={this.props.poll.id}/>
+    const pollDetail = <PollChart poll={this.props.poll} key={this.props.poll.id}/>
+
     return(
       <div className="poll-item-box" draggable="true" onDragStart={this.handleDragEvent} id={''}>
         <div className="poll-item-title">
