@@ -6,6 +6,7 @@ html, body, section, article, h1, h2, p, div, header, a {
   /*font-family: sans-serif;*/
   font-family: 'Roboto', sans-serif;
   /* align-items: center; */
+  /* height: 100%; */
 }
 
 body {
@@ -329,11 +330,11 @@ body {
   border-radius: 3px;
 }
 
-.poll-submit-button {
+.poll-submit-button, .vote-form-submit {
   background-color: #255073;
   border: none;
   padding: 5px 10px;
-  margin: 20px 0;
+  margin: 20px 0 0;
   border-radius: 3px;
   color: white;
 }
@@ -362,4 +363,55 @@ body {
 
 .live {
   color: darkorange;
+}
+
+.vote-form-box {display: flex;align-items: center;height: 100%;flex-direction: column;}
+
+.vote-form-itself {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 40px; */
+  padding: 20px;
+  background-color: #ccdce8;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 1px 1px 1px #888888;
+}
+
+.vote-form-radio {
+
+}
+
+.vote-form-input-box {padding: 15px;font-size: 20px;font-weight: bold;display: flex;align-items: center;}
+.vote-form-input-box:hover {
+  font-style: italic;
+  cursor: pointer;
+  background-color: #e9eff4;
+  border-radius: 3px;
+}
+.vote-form-submit {width: 200px;padding: 20px;font-size: 18px;font-weight: bold;}
+.vote-form-submit:hover {
+  font-style: italic;
+  cursor: pointer;
+  padding: 19px;
+  border: 1px solid blue;
+  text-decoration: underline;
+}
+.vote-form-question {
+  display: block;
+  width: 400px;
+  background-color: #bad0e0;
+  padding: 20px;
+  margin-top: 40px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 1px 1px 0 #888888;
+}
+
+input[type=radio]{
+  height: 20px;
+  width: 20px;
+  display: block;
+  margin: 10px;
 }
