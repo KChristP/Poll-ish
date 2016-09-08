@@ -61,22 +61,28 @@ class PollItem extends React.Component {
     return(
       <div className="poll-item-box" draggable="true" onDragStart={this.handleDragEvent} id={''}>
         <div className="poll-item-title">
-          <div onClick={this.showPollDetail}>{this.props.poll.question.body}</div>
+
+          <div onClick={this.showPollDetail} className="poll_item_clickable">{this.props.poll.question.body}</div>
+
           <div className="poll-item-button-box">
+
             <div className="poll-item-button-sub-box">
               <i className={thisIsLive ? "fa fa-power-off live" : "fa fa-power-off"}
                 aria-hidden="true">
               </i>
               <p className={thisIsLive ? "fa-text live" : "fa-text"} onClick={this.handleMakeLive}>{thisIsLive ? "Live" : "Make Live"}</p>
             </div>
+
             <div onClick={this.clickToDestroy} className="poll-item-button-sub-box">
               <i className="fa fa-trash-o"
                 aria-hidden="true">
               </i>
               <p className="fa-text">Delete</p>
             </div>
+
             <PollFormUpdateContainer poll={this.props.poll}/>
           </div>
+
         </div>
         {this.state.showDetail ? pollDetail : ""}
       </div>

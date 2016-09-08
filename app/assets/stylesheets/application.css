@@ -179,7 +179,7 @@ body {
   /* background-color: #e9eff4; */
 }
 .poll-item-box {
-  padding: 10px 25px;
+  /* padding: 10px 25px; */
   background-color: #e9eff4;
 }
 .poll-item-box:hover {
@@ -415,3 +415,5 @@ input[type=radio]{
   display: block;
   margin: 10px;
 }
+
+.poll_item_clickable {padding: 20px;width: 100%;}
