@@ -14,6 +14,7 @@ import {
 } from '../util/poll_util';
 import { LiveConstants, newLive } from '../actions/live_actions';
 import {ajaxForRequestLive} from '../util/live_util';
+// import {receiveErrors} from '../actions/session_actions'
 
 export default ({getState, dispatch}) => next => action => {
   const successIndexCallback = polls => dispatch(receiveAllPolls(polls));
@@ -23,9 +24,8 @@ export default ({getState, dispatch}) => next => action => {
     dispatch(removePoll(poll));
   };
   const successLiveCallback = poll => dispatch(newLive(poll));
-  const errorCallback = xhr => {
-    const errors = xhr.responseJSON;
-    dispatch(receiveErrors(errors));
+  const errorCallback = error => {
+    console.log(error)
   };
 
   switch(action.type){

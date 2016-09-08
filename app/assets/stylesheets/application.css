@@ -199,6 +199,7 @@ body {
 .poll-item-button-box {
   display: flex;
   justify-content: space-between;
+  margin-right: 20px;
 }
 .group-item-title {
   /* color: #203349; */
@@ -341,6 +342,7 @@ body {
 
 .fa-text {
   font-family: sans-serif;
+  white-space: nowrap;
 }
 .fa-text:hover {
   font-weight: bold;
@@ -421,5 +423,5 @@ input[type=radio]{
 
 }
 .successfully-submitted-notification {
-  
+
 }

@@ -11,6 +11,7 @@ class VoteForm extends React.Component {
 
   componentWillMount(){
     this.props.requestPoll(this.props.params.user_id)
+    
   }
 
   componentWillReceiveProps(nextProps){

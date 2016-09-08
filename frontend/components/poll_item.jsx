@@ -26,11 +26,6 @@ class PollItem extends React.Component {
      that.props.requestSinglePoll(data.poll_id);
    });
   }
-  //
-  // componentWillReceiveProps(newProps){
-  //     debugger
-  //     this.forceUpdate()
-  // }
 
   clickToDestroy(e){
     this.props.destroyPoll(this.props.poll)
@@ -45,13 +40,15 @@ class PollItem extends React.Component {
   }
 
   handleMakeLive(){
-    debugger
     let pollToSend = merge({}, this.props.poll)
     pollToSend.live = !this.props.poll.live
     pollToSend.make_live = !this.props.poll.live
     this.props.updatePoll({poll: pollToSend})
     if (this.props.poll.live === false){
       this.props.requestLive(this.props.user_id)
+    }
+    if (this.props.poll.live === true){
+      this.props.newLive({})
     }
   }
 
