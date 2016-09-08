@@ -37,7 +37,6 @@ class PollForm extends React.Component {
     let answers = this.state.answers.filter(answer => answer !== undefined)
     let question = {body: this.state.question, answers: answers}
     this.props.createPoll({poll: {live: false, group_id: this.props.groupId, question: question}})
-    //{poll: {live: false, group_id: 1, question: {body: "who", answers: ["me", "you"]}}}
     this.setState(Object.assign({}, this.state, {modalOpen: false}))
   }
 

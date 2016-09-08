@@ -56,8 +56,15 @@ class PollItem extends React.Component {
   render(){
     const thisIsLive = this.props.live ? (this.props.poll.id === this.props.live.id) : false;
     const pollDetail = (
-      <div id="chart_div">
-        <PollChart poll={this.props.poll} key={this.props.poll.id}/>
+      <div className="chart_div">
+        <div className="chart-link-box">
+          <a href={"http://poll-ish.us/#/users/" + this.props.user_id} className="chart-link-itself">
+            Make this poll live and vote at: <strong>{"http://poll-ish.us/#/users/" + this.props.user_id}</strong>
+          </a>
+        </div>
+        <div id={"BarChart" + this.props.poll.id} className={"my-pretty-chart-container"}>
+          <PollChart poll={this.props.poll} key={this.props.poll.id}/>
+        </div>
       </div>
     )
     return(

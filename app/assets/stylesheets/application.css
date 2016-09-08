@@ -425,3 +425,17 @@ input[type=radio]{
 .successfully-submitted-notification {
 
 }
+
+.chart-link-box {width: 100%;text-align: center;padding-bottom: 10px;}
+
+.chart_div {
+
+}
+.chart-link-itself {
+  text-decoration: none;
+  color: #203349;
+}
+
+.my-pretty-chart-container {
+  padding: 10px;
+}

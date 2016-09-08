@@ -18,8 +18,8 @@ export default class PollChart extends React.Component{
       <Chart
         chartType="BarChart"
         data={data}
-        options = {{}}
-        graph_id = "BarChart"
+        options={{title: this.props.poll.question.body}}
+        graph_id={"BarChart" + this.props.poll.id}
         width={"100%"}
         height={"400px"}
         legend_toggle={true} />

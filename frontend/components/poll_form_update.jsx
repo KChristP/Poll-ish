@@ -111,11 +111,3 @@ class PollFormUpdate extends React.Component {
 }
 
 export default PollFormUpdate;
-
-
-
-// <button
-//   id="edit-poll-button"
-//   onClick={this._handleUpdatePollClick}>
-//   Edit
-// </button>
