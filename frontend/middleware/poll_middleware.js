@@ -12,6 +12,8 @@ import {
   ajaxForUpdatePoll,
   ajaxForRequestPoll
 } from '../util/poll_util';
+import { LiveConstants, newLive } from '../actions/live_actions';
+import {ajaxForRequestLive} from '../util/live_util';
 
 export default ({getState, dispatch}) => next => action => {
   const successIndexCallback = polls => dispatch(receiveAllPolls(polls));
@@ -20,6 +22,7 @@ export default ({getState, dispatch}) => next => action => {
   const successRemoveCallback = poll => {
     dispatch(removePoll(poll));
   };
+  const successLiveCallback = poll => dispatch(newLive(poll));
   const errorCallback = xhr => {
     const errors = xhr.responseJSON;
     dispatch(receiveErrors(errors));
@@ -40,6 +43,9 @@ export default ({getState, dispatch}) => next => action => {
       return next(action);
     case PollConstants.REQUEST_SINGLE_POLL:
       ajaxForRequestPoll(action.poll_id, successPollCallback, errorCallback);
+      return next(action);
+    case LiveConstants.REQUEST_LIVE:
+      ajaxForRequestLive(action.user_id, successLiveCallback, errorCallback);
       return next(action);
     default:
       return next(action);

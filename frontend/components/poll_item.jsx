@@ -26,14 +26,18 @@ class PollItem extends React.Component {
      that.props.requestSinglePoll(data.poll_id);
    });
   }
-
+  //
+  // componentWillReceiveProps(newProps){
+  //     debugger
+  //     this.forceUpdate()
+  // }
 
   clickToDestroy(e){
     this.props.destroyPoll(this.props.poll)
   }
 
   showPollDetail(){
-    this.setState({showDetail: !this.state.showDetail})
+    this.setState(Object.assign({}, this.state, {showDetail: !this.state.showDetail}))
   }
 
   handleDragEvent(e) {
@@ -41,18 +45,19 @@ class PollItem extends React.Component {
   }
 
   handleMakeLive(){
+    debugger
     let pollToSend = merge({}, this.props.poll)
     pollToSend.live = !this.props.poll.live
     pollToSend.make_live = !this.props.poll.live
     this.props.updatePoll({poll: pollToSend})
     if (this.props.poll.live === false){
-      this.props.newLive({id: this.props.poll.id})
+      this.props.requestLive(this.props.user_id)
     }
   }
 
 
   render(){
-    const thisIsLive = (this.props.poll.live && (this.props.live.id === this.props.poll.id))
+    const thisIsLive = this.props.live ? (this.props.poll.id === this.props.live.id) : false;
     const pollDetail = (
       <div id="chart_div">
         <PollChart poll={this.props.poll} key={this.props.poll.id}/>
@@ -66,11 +71,11 @@ class PollItem extends React.Component {
 
           <div className="poll-item-button-box">
 
-            <div className="poll-item-button-sub-box">
+            <div className="poll-item-button-sub-box" onClick={this.handleMakeLive}>
               <i className={thisIsLive ? "fa fa-power-off live" : "fa fa-power-off"}
                 aria-hidden="true">
               </i>
-              <p className={thisIsLive ? "fa-text live" : "fa-text"} onClick={this.handleMakeLive}>{thisIsLive ? "Live" : "Make Live"}</p>
+              <p className={thisIsLive ? "fa-text live" : "fa-text"}>{thisIsLive ? "Live" : "Make Live"}</p>
             </div>
 
             <div onClick={this.clickToDestroy} className="poll-item-button-sub-box">

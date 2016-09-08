@@ -18,7 +18,8 @@ class Sidebar extends React.Component {
   }
 
   componentWillMount(){
-    this.props.requestAllGroups()
+    this.props.requestAllGroups();
+    this.props.requestLive(this.props.user_id);
   }
 
   componentWillReceiveProps(newProps){
