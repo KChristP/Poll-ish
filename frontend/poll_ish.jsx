@@ -8,7 +8,6 @@ import Root from './components/root';
 import Modal from 'react-modal';
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("loading");
   Modal.setAppElement(document.body);//what content react-modal will disable
   let store;
   let preloadedState;
