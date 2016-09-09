@@ -80,7 +80,13 @@ class PollFormUpdate extends React.Component {
   render(){
     let answerInputs = [];
     for(let i = 0; i < this.state.answerCount; i++){
-      answerInputs.push(<input id={i} type="text" value={this.state.answers[i]} onChange={this.handleAnswerChange} key={"abc" + i}/>)
+      answerInputs.push(<input
+        id={i}
+        className="poll-form-input"
+        type="text"
+        value={this.state.answers[i]}
+        onChange={this.handleAnswerChange}
+        key={"abc" + i}/>)
     }
     return(
       <div className="poll-item-button-sub-box" onClick={this._handleUpdatePollClick}>
@@ -95,13 +101,22 @@ class PollFormUpdate extends React.Component {
           onRequestClose={this._onModalClose}
           style={ModalStyle}
           onAfterOpen={this._onModalOpen}>
-          <button onClick={this._onModalClose}>Close</button>
+          <div onClick={this._onModalClose} className="poll-form-modal-close"><i className="fa fa-times" aria-hidden="true"></i></div>
           <div className="new-poll-form-box">
             <form className="new-poll-form-itself" onSubmit={this.handleSubmit}>
-              Question <input type="text" value={this.state.question} onChange={this.handleQuestionChange}/>
+              <label className="poll-form-label">Question:</label>
+              <input
+                type="text"
+                className="poll-form-input"
+                value={this.state.question}
+                onChange={this.handleQuestionChange}
+                placeholder="Answer"/>
+              <label className="poll-form-label">Answers:</label>
               {answerInputs}
-              <div onClick={this.addAnswerField}>Add Another Answer!</div>
-              <input type="submit" value="Update!" />
+              <div
+                className="poll-form-add-answer"
+                onClick={this.addAnswerField}>Add Another Answer!</div>
+              <input type="submit" value="Update!" className="poll-submit-button"/>
             </form>
           </div>
         </Modal>

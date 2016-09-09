@@ -75,7 +75,7 @@ class GroupItem extends React.Component {
     let editInput = this.state.editInputOpen ? (
       <form onSubmit={this.handleGroupEditSubmit}>
         <input type="text" value={this.state.name} onChange={this.handleNameChange}/>
-        <input type="submit" value="Submit"/>
+        <input type="submit" value="Submit" className="group-item-edit-input"/>
       </form>
     ) : "";
     return(

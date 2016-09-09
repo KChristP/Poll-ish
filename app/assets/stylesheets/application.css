@@ -183,7 +183,7 @@ body {
   background-color: #e9eff4;
 }
 .poll-item-box:hover {
-  cursor: pointer;
+  /*cursor: pointer;*/
   background-color: #d8e3ec
 }
 .poll-item-title {
@@ -219,10 +219,10 @@ body {
   margin-top: 20px;
 }
 
-.group-item-title:hover {
+/*.group-item-title:hover {
   cursor: pointer;
   background-color: #bad0e0;
-}
+}*/
 .new-poll-form-itself {
   display: flex;
   flex-direction: column;
@@ -314,13 +314,16 @@ body {
 
 .fa:hover {
   font-weight: bold;
+  cursor: pointer;
 }
 
 .poll-form-label {
   padding: 10px;
+  font-weight: bold;
+  color: #203349;
 }
 
-.poll-form-input {margin: 5px;padding: 5px;}
+.poll-form-input {margin: 5px 5px 10px 5px;padding: 5px;}
 
 .poll-form-add-answer {
   font-size: 12px;
@@ -329,13 +332,14 @@ body {
   color: white;
   width: 120px;
   border-radius: 3px;
+  margin: 5px;
 }
 
 .poll-submit-button, .vote-form-submit {
   background-color: #255073;
   border: none;
   padding: 5px 10px;
-  margin: 20px 0 0;
+  margin: 20px 0 0 5px;
   border-radius: 3px;
   color: white;
 }
@@ -353,6 +357,7 @@ body {
 }
 .poll-item-button-sub-box:hover {
   font-weight: bold;
+  cursor: pointer;
 }
 
 .sidebar-box em:hover {
@@ -361,7 +366,7 @@ body {
 }
 .add-group-sidebar-form {margin: 20px;}
 .add-group-sidebar-submit {border: none;background-color: #255073;color: white;font-size: 12px;padding: 5px 10px;border-radius: 3px;}
-.add-group-sidebar-input {margin: 0 0 10px;}
+.add-group-sidebar-input {margin: 0 0 10px;width: 127px;}
 
 .live {
   color: darkorange;
@@ -438,4 +443,13 @@ input[type=radio]{
 
 .my-pretty-chart-container {
   padding: 10px;
+}
+
+.poll-form-modal-close {display: flex;justify-content: flex-end;}
+.group-item-edit-input{
+  border: none;background-color: #255073;color: white;font-size: 12px;padding: 3px 10px;border-radius: 3px;
+}
+
+.poll_item_clickable:hover {
+  cursor: pointer;
 }

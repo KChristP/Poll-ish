@@ -66,7 +66,7 @@ class PollForm extends React.Component {
       answerInputs.push(<input
         id={i}
         className="poll-form-input"
-        placeholder="Answer"
+        placeholder={"Answer " + (i + 1)}
         type="text"
         value={this.state.answers[i]}
         onChange={this.handleAnswerChange} key={"abc" + i}/>)
@@ -83,7 +83,7 @@ class PollForm extends React.Component {
           onRequestClose={this._onModalClose}
           style={ModalStyle}
           onAfterOpen={this._onModalOpen}>
-          <button onClick={this._onModalClose}>Close</button>
+          <div onClick={this._onModalClose} className="poll-form-modal-close"><i className="fa fa-times" aria-hidden="true"></i></div>
           <div className="new-poll-form-box">
             <form className="new-poll-form-itself" onSubmit={this.handleSubmit}>
               <label className="poll-form-label">Question:</label>
