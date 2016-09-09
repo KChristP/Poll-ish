@@ -60,31 +60,37 @@ class SessionForm extends React.Component {
   render() {
 		return (
       <div className="logged-out-overall-box box">
-        <div className="login-form-box box">
-          <form onSubmit={this.handleSubmit} className="login-form-itself">
+        <div className="form-and-logo">
+          <div className="logo-and-guest-login">
+            <img src="assets/Pollishlogo1.png" className="logo-large"/>
+            New here?
+            <div onClick={this.autofill} className="guest-login">Login as Guest</div>
+            and try it without signing up!
+          </div>
+          <div className="login-form-box box">
+            <form onSubmit={this.handleSubmit} className="login-form-itself">
 
-            <br className="login-form-message"/>
-            <h1>{ this.props.formType.replace(/\b\w/g, l => l.toUpperCase()) }</h1> or { this.navLink() }
-            { this.renderErrors() }
+              <br className="login-form-message"/>
+              <h1>{ this.props.formType.replace(/\b\w/g, l => l.toUpperCase()) }</h1> or { this.navLink() }
+              { this.renderErrors() }
 
-            <div className="login-form-inputs-box box">
-              <br />
-              <label className="login-form-label"> Email:</label>
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update("email")}
-                className="login-input" />
-              <label className="login-form-label"> Password:</label>
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update("password")}
-                className="login-input" />
-              <input type="submit" value="Submit" className="login-submit"/>
-              <div onClick={this.autofill} className="guest-login">Guest Login</div>
+              <div className="login-form-inputs-box box">
+                <br />
+                <label className="login-form-label"> Email:</label>
+                <input type="text"
+                  value={this.state.email}
+                  onChange={this.update("email")}
+                  className="login-input" />
+                <label className="login-form-label"> Password:</label>
+                <input type="password"
+                  value={this.state.password}
+                  onChange={this.update("password")}
+                  className="login-input" />
+                <input type="submit" value="Submit" className="login-submit"/>
+              </div>
+            </form>
 
-            </div>
-          </form>
-
+          </div>
         </div>
         <HowItWorks />
 

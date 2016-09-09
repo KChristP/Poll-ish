@@ -69,11 +69,9 @@ body {
 }
 
 .login-form-box {
-  /*background-color: blue;*/
   display: flex;
   justify-content: center;
-  color: black;
-  width: 100%;
+  color: #203349;
 }
 .login-form-itself {
   margin-top: 50px;
@@ -159,6 +157,7 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-top: 20px;
 }
 
 .hiw-block {
@@ -168,11 +167,20 @@ body {
 }
 
 .guest-login {
-  padding-top: 10px;
+  padding: 10px 20px;
+  background-color: #ccdce8;
+  border-radius: 3px;
+  width: 150px;
+  text-align: center;
+  border: 1px solid #203349;
+  margin: 10px;
+  font-weight: bold;
 }
 .guest-login:hover {
   cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
+  background-color: #bad0e0;
 }
 
 .group-sidebar-item {
@@ -352,6 +360,7 @@ body {
 }
 .fa-text:hover {
   font-weight: bold;
+  cursor: pointer;
 }
 .poll-item-button-sub-box {
   display: flex;
@@ -459,4 +468,14 @@ input[type=radio]{
   font-size: 12px;
   margin-bottom: 10px;
   color: #d95347;
+}
+.logo-and-guest-login {text-align: center;display: flex;flex-direction: column;align-items: center;color: #203349;}
+
+.logo-large {padding: 50px 20px;}
+.logged-out-overall-box {
+
+}
+.form-and-logo {
+  display: flex;
+  justify-content: center;
 }
