@@ -21,7 +21,7 @@ Upon login, separate API calls are made to the `GroupsController` and `Pollishes
 
 Group info is rendered separately in two different components: the `GroupSidebarItem` and the `GroupItem` which are placed in the `Sidebar` and `MainPanel` components respectively. Editing of groups is allowed through onClick events implemented on the `GroupItem` component and adding new groups is achieved through onClick events implemented in the `Sidebar`. The layout can be seen below:
 
-[Image of Sidebar and Main Panel showing single group]('assets/images/GroupsAndPolls')
+[Image of Sidebar and Main Panel showing single group]('app/assets/images/GroupsAndPolls')
 <img src="assets/images/GroupsAndPolls"/>
 
 Adding and editing polls is achieved through the `PollForm` component which makes the appropriate API calls to the `PollishesController`. This is housed in both the `SidePanel` and in each `GroupItem` so that adding a poll from the sidebar will default polls to an "Ungrouped" group whereas adding a poll via the `GroupItem`'s "Add Poll" button adds the poll directly to the attached group.
@@ -30,7 +30,7 @@ Adding and editing polls is achieved through the `PollForm` component which make
 Polls' CRUD features are activated in `PollItem` components and `PollChart` components display the poll results graphically using [react-google-charts](https://github.com/RakanNimer/react-google-charts).
 
 [Image of Poll and Graph]('assets/images/PollChart')
-<img src="assets/images/PollChart"/>
+<img src="app/assets/images/PollChart"/>
 
 A single poll can be live at a time, which is achieved on the backend in the `PollishesController` which implements an `ensure_single_live` method when polls are edited or added. Toggling the live status of a poll is achieved through onClick events in `PollItem`s. Polls can be moved between groups by dragging from one group to another which was implemented with drag and drop events in the `PollItem` and `GroupItem` components respectively.
 
