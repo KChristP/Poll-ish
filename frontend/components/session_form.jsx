@@ -62,10 +62,11 @@ class SessionForm extends React.Component {
       <div className="logged-out-overall-box box">
         <div className="form-and-logo">
           <div className="logo-and-guest-login">
-            <img src="assets/Pollishlogo1.png" className="logo-large"/>
-            New here?
-            <div onClick={this.autofill} className="guest-login">Login as Guest</div>
-            and try it without signing up!
+            <div className="logo-large">
+              New here?
+              <div onClick={this.autofill} className="guest-login">Login as Guest</div>
+              and try it without signing up!
+            </div>
           </div>
           <div className="login-form-box box">
             <form onSubmit={this.handleSubmit} className="login-form-itself">

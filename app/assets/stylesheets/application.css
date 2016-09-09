@@ -103,6 +103,8 @@ body {
   padding: 10px;
   font-size: 14px;
   text-align: center;
+  color: #203349;
+  font-weight: bold;
 }
 
 
@@ -471,11 +473,17 @@ input[type=radio]{
 }
 .logo-and-guest-login {text-align: center;display: flex;flex-direction: column;align-items: center;color: #203349;}
 
-.logo-large {padding: 50px 20px;}
+.logo-large {padding: 50px;}
 .logged-out-overall-box {
 
 }
 .form-and-logo {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+.hiw-number {
+  border: 2px solid #d95347;
+  padding: 3px 5px;
+  border-radius: 15px;
 }

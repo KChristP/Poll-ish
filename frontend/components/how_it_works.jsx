@@ -7,7 +7,7 @@ const HowItWorks = () => (
         <img src="assets/ask_question-1.gif"/>
       </div>
       <div className="hiw-text">
-        1. You write and publish a poll through Poll-ish
+        <strong className="hiw-number">1.</strong> You write and publish a poll through Poll-ish
       </div>
     </div>
 
@@ -16,7 +16,7 @@ const HowItWorks = () => (
         <img src="assets/audience_answers-2.gif"/>
       </div>
       <div className="hiw-text">
-        2. Your audience answers with a web browser or by text message
+        <strong className="hiw-number">2.</strong> Your audience answers with a web browser or by text message
       </div>
     </div>
 
@@ -25,7 +25,7 @@ const HowItWorks = () => (
         <img src="assets/see_response-3.gif"/>
       </div>
       <div className="hiw-text">
-        3. View the poll results in real time as they update
+        <strong className="hiw-number">3.</strong> View the poll results in real time as they update
       </div>
     </div>
   </div>
