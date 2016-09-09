@@ -16,7 +16,7 @@ const HowItWorks = () => (
         <img src="assets/audience_answers-2.gif"/>
       </div>
       <div className="hiw-text">
-        <strong className="hiw-number">2.</strong> Your audience answers with a web browser or by text message
+        <strong className="hiw-number">2.</strong> Your audience answers on their computer or mobile device
       </div>
     </div>
 

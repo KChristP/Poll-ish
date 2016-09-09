@@ -14,11 +14,9 @@ class Api::PollishesController < ApplicationController
     end
   end
 
-  #have a compare function to compare Q&A of params vs Q&A of db object. if different do the swap as written
-  #if not different - just swap group_id or live status and skip this (so we don't lose poll vote data every time we go live)
   def update
     @poll = Pollish.find_by_id(poll_params[:id])
-    if poll_params[:place_vote]#I'll just add a param called place_vote on my answer site, and deal with vote updates differently from normal ones to avoid changing too much
+    if poll_params[:place_vote]
       @answer = Answer.find_by_id(poll_params[:answer_id])
       @answer.votes += 1
       if @answer.save

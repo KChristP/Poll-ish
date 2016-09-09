@@ -87,7 +87,6 @@ body {
 .login-form-inputs-box {
   display: flex;
   flex-direction: column;
-
 }
 
 .login-input {
@@ -95,8 +94,9 @@ body {
   width: 300px;
   height: 25px;
   border-radius: 3px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   /*margin: 10px;*/
+  padding: 5px;
 }
 
 .hiw-text {
@@ -109,13 +109,13 @@ body {
 
 
 .login-submit {
-  padding:5px;
+  padding: 10px;
   border:2px solid #ccc;
   border-radius: 3px;
   background-color: #d95347;
-
   font-family: "Source Sans Pro", "Lucida Grande", Arial, Verdana, sans-serif;
   font-size: 1em;
+  margin-top: 15px;
 }
 
 .login-submit:hover {
