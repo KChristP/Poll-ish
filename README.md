@@ -28,7 +28,7 @@ Adding and editing polls is achieved through the `PollForm` component which make
 
 Polls' CRUD features are activated in `PollItem` components and `PollChart` components display the poll results graphically using [react-google-charts](https://github.com/RakanNimer/react-google-charts).
 
-![Image of Poll and Graph](assets/images/PollChart.png)
+![Image of Poll and Graph](app/assets/images/PollChart.png)
 
 A single poll can be live at a time, which is achieved on the backend in the `PollishesController` which implements an `ensure_single_live` method when polls are edited or added. Toggling the live status of a poll is achieved through onClick events in `PollItem`s. Polls can be moved between groups by dragging from one group to another which was implemented with drag and drop events in the `PollItem` and `GroupItem` components respectively.
 
