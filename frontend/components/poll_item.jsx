@@ -2,6 +2,8 @@ import React from 'react';
 import PollChart from './poll_chart'
 import PollFormUpdateContainer from './poll_form_update_container'
 import merge from 'lodash/merge';
+import {hashHistory, Link } from 'react-router';
+
 
 
 class PollItem extends React.Component {
@@ -58,9 +60,10 @@ class PollItem extends React.Component {
     const pollDetail = (
       <div className="chart_div">
         <div className="chart-link-box">
-          <a href={"http://poll-ish.us/#/users/" + this.props.user_id} className="chart-link-itself">
-            Make this poll live and vote at: <strong>{"http://poll-ish.us/#/users/" + this.props.user_id}</strong>
-          </a>
+          <p className="make-live-notification">{thisIsLive ? "" : "(Click 'Make Live' above to allow your audience to vote!)"}</p>
+            <Link to={"/users/" + this.props.user_id} className="chart-link-itself">
+              Cast your vote at: <strong>{"http://poll-ish.us/#/users/" + this.props.user_id}</strong>
+            </Link>
         </div>
         <div id={"BarChart" + this.props.poll.id} className={"my-pretty-chart-container"}>
           <PollChart poll={this.props.poll} key={this.props.poll.id}/>
