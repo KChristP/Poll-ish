@@ -70,3 +70,15 @@ componentDidMount(){
  });
 }
 ```
+
+##Future Developments
+
+The next steps for this project are outlined below:
+
+###SMS
+
+To allow user users to text answers a suitable API needs to be found to receive and convert text information into JSON and make POST requests to the server.
+
+###VoteSecurity
+
+I may add tables logging IP address and/or phone numbers who vote in order to allow implementation of deterrence of multiple voting by people who delete or do not store cookies in their browser.

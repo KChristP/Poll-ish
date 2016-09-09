@@ -20,7 +20,6 @@ class GroupItem extends React.Component {
 
   compontWillReceiveProps(){
     this.forceUpdate()
-    console.log("group item received props");
   }
 
   handleGroupEditSubmit(e){

@@ -79,7 +79,7 @@ class Api::PollishesController < ApplicationController
   private
 
   def poll_params
-    params.require(:poll).permit(:make_live, :answer_id, :place_vote, :group_id, :live, :id, question: [:body, :id, :question_id, answers: [:body, :id, :live]])
+    params.require(:poll).permit(:user_id, :make_live, :answer_id, :place_vote, :group_id, :live, :id, question: [:body, :id, :question_id, answers: [:body, :id, :live]])
   end
 
   def ensure_single_live
@@ -99,14 +99,17 @@ class Api::PollishesController < ApplicationController
     params[:poll][:question][:answers].each do |answer|
       answers_attributes << {body: answer}
     end
+    groupId = poll_params[:group_id] ? poll_params[:group_id] : Group.create(name: "Ungrouped", user_id: poll_params[:user_id]).id
+
     @poll = Pollish.new(
-      group_id: poll_params[:group_id],
+      group_id: groupId,
       live: poll_params[:live],
       questions_attributes: [{
         body: params[:poll][:question][:body],
         answers_attributes: answers_attributes
       }]
     )
+
   end
 
   def same_q_and_a?
