@@ -66,6 +66,7 @@ body {
 
 .login-link, .signup-link {
   color: white;
+  text-decoration: none;
 }
 
 .login-form-box {
@@ -126,8 +127,7 @@ body {
 
 .logo {
   width: 60px;
-  margin-top: 5px;
-  margin-left: 20px;
+  margin-top: 8px;
 }
 
 .logout-button-container, .login-signup {
@@ -146,10 +146,12 @@ body {
   color: white;
   height: 75px;
 }
-.login-box:hover {
+.login-box:hover, .logo-container:hover, .log:hover {
   cursor: pointer;
   background-color: #1f4360;
 }
+
+.logo-container {height: 75px;margin-left: 20px;padding-left: 10px;padding-right: 10px;}
 
 .logout-button-container {
     display: flex;
@@ -238,10 +240,12 @@ body {
 .new-poll-form-itself {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
 
 .new-poll-form-box {
-  width: 250px;
+  width: 100%;
 }
 
 .sidebar-list-item {
@@ -335,7 +339,7 @@ body {
   color: #203349;
 }
 
-.poll-form-input {margin: 5px 5px 10px 5px;padding: 5px;}
+.poll-form-input {margin: 5px 5px 10px 5px;padding: 5px;width: 300px;}
 
 .poll-form-add-answer {
   font-size: 12px;
@@ -345,6 +349,11 @@ body {
   width: 120px;
   border-radius: 3px;
   margin: 5px;
+  margin-left: 90px;
+}
+.poll-form-add-answer:hover, .poll-submit-button:hover {
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .poll-submit-button, .vote-form-submit {
@@ -354,6 +363,7 @@ body {
   margin: 20px 0 0 5px;
   border-radius: 3px;
   color: white;
+  width: 200px;
 }
 
 .fa-text {
@@ -465,6 +475,7 @@ input[type=radio]{
 
 .poll_item_clickable:hover {
   cursor: pointer;
+
 }
 .make-live-notification {
   font-size: 12px;
@@ -486,4 +497,18 @@ input[type=radio]{
   border: 2px solid #d95347;
   padding: 3px 5px;
   border-radius: 15px;
+}
+
+.poll-form-question-wrapper {
+  background-color: #ccdce8;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 10px 5px 5px 10px;
+  width: 330px;
+}
+
+.poll-form-answer-wrapper {
+  background-color: #e9eff4;
+  padding: 10px 5px 5px 10px;
+  width: 330px;
 }

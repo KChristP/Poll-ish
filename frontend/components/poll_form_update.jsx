@@ -104,18 +104,22 @@ class PollFormUpdate extends React.Component {
           <div onClick={this._onModalClose} className="poll-form-modal-close"><i className="fa fa-times" aria-hidden="true"></i></div>
           <div className="new-poll-form-box">
             <form className="new-poll-form-itself" onSubmit={this.handleSubmit}>
-              <label className="poll-form-label">Question:</label>
-              <input
-                type="text"
-                className="poll-form-input"
-                value={this.state.question}
-                onChange={this.handleQuestionChange}
-                placeholder="Answer"/>
-              <label className="poll-form-label">Answers:</label>
-              {answerInputs}
-              <div
-                className="poll-form-add-answer"
-                onClick={this.addAnswerField}>Add Another Answer!</div>
+              <div className="poll-form-question-wrapper">
+                <label className="poll-form-label">Question:</label>
+                <input
+                  type="text"
+                  className="poll-form-input"
+                  value={this.state.question}
+                  onChange={this.handleQuestionChange}
+                  placeholder="Answer"/>
+              </div>
+              <div className="poll-form-answer-wrapper">
+                <label className="poll-form-label">Answers:</label>
+                {answerInputs}
+                <div
+                  className="poll-form-add-answer"
+                  onClick={this.addAnswerField}>Add Another Answer!</div>
+              </div>
               <input type="submit" value="Update!" className="poll-submit-button"/>
             </form>
           </div>

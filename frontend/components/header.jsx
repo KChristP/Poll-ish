@@ -34,9 +34,11 @@ class Header extends React.Component {
 
     return (
       <div className="header-container">
-        <Link to="/">
-            <img src="assets/Pollishwhite.png" className="logo"/>
-        </Link>
+        <div className="logo-container">
+          <Link to="/">
+              <img src="assets/Pollishwhite.png" className="logo"/>
+          </Link>
+        </div>
         {loginOrLogout}
       </div>
     )
