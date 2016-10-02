@@ -11,7 +11,7 @@ class VoteForm extends React.Component {
 
   componentWillMount(){
     this.props.requestPoll(this.props.params.user_id)
-    
+
   }
 
   componentWillReceiveProps(nextProps){
@@ -59,7 +59,7 @@ class VoteForm extends React.Component {
       answerChoices = (
       <div className="completed-poll-box">
         <div className="successfully-submitted-notification">
-          Answer successfully submitted!!!
+          <i className="fa fa-check-square-o" aria-hidden="true"></i>Answer successfully submitted!!!
         </div>
         <div id="chart_div">
           <PollChart poll={this.props.poll} key={this.props.poll.id}/>
