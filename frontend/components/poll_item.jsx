@@ -3,6 +3,8 @@ import PollChart from './poll_chart'
 import PollFormUpdateContainer from './poll_form_update_container'
 import merge from 'lodash/merge';
 import {hashHistory, Link } from 'react-router';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+
 
 
 
@@ -58,6 +60,7 @@ class PollItem extends React.Component {
   render(){
     const thisIsLive = this.props.live ? (this.props.poll.id === this.props.live.id) : false;
     const pollDetail = (
+
       <div className="chart_div">
         <div className="chart-link-box">
           <p className="make-live-notification">{thisIsLive ? "" : "(Click 'Make Live' above to allow your audience to vote!)"}</p>
@@ -95,8 +98,12 @@ class PollItem extends React.Component {
             <PollFormUpdateContainer poll={this.props.poll}/>
           </div>
 
-        </div>
-        {this.state.showDetail ? pollDetail : ""}
+        </div><ReactCSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={100}>
+          {this.state.showDetail ? pollDetail : ""}
+        </ReactCSSTransitionGroup>
       </div>
     )
   }

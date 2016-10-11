@@ -13,7 +13,7 @@ class Header extends React.Component {
     if (this.props.currentUser){
       loginOrLogout = (
         <div className="logout-button-container">
-          <div className="welcome-name">Logged in as: {this.props.currentUser.email}!</div>
+          <div className="welcome-name">{this.props.currentUser.email}!</div>
           <div className="login-box" onClick={this.props.logout}>
             <Link to="/login" className="login-link">Log Out</Link>
           </div>

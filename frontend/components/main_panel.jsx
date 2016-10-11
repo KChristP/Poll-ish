@@ -1,5 +1,7 @@
 import React from 'react';
 import GroupItemContainer from './group_item_container'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+
 
 class MainPanel extends React.Component {
   constructor(props){
@@ -43,7 +45,12 @@ class MainPanel extends React.Component {
     }
     return(
       <div>
+        <ReactCSSTransitionGroup
+          transitionName="slidein"
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={200}>
         {polls_by_group}
+      </ReactCSSTransitionGroup>
       </div>
     )
   }

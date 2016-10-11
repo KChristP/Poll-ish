@@ -233,10 +233,10 @@ body {
   margin-top: 20px;
 }
 
-/*.group-item-title:hover {
+.group-item-title:hover {
   cursor: pointer;
   background-color: #bad0e0;
-}*/
+}
 .new-poll-form-itself {
   display: flex;
   flex-direction: column;
@@ -272,7 +272,7 @@ body {
 }
 .new-poll-button:hover {
   cursor: pointer;
-  font-style: italic;
+  text-decoration: underline;
 }
 
 .main-panel-box em {
@@ -385,7 +385,8 @@ body {
 
 .sidebar-box em:hover {
   padding: 9px 19px;
-  border: 1px solid red;
+  border: 1px solid darkorange;
+  background-color: #d94639
 }
 .add-group-sidebar-form {margin: 20px;}
 .add-group-sidebar-submit {border: none;background-color: #255073;color: white;font-size: 12px;padding: 5px 10px;border-radius: 3px;}
@@ -511,4 +512,114 @@ input[type=radio]{
   background-color: #e9eff4;
   padding: 10px 5px 5px 10px;
   width: 330px;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 0;
+  animation-name: bounceIn;
+  animation-duration: 200ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: all 100ms cubic-bezier(.91,.8,.54,1.39);
+}
+
+@keyframes bounceIn{
+  0%{
+    opacity: 0;
+    transform: scale(0.3) translate3d(0,0,0);
+  }
+  50%{
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+  80%{
+    opacity: 1;
+    transform: scale(0.95);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1) translate3d(0,0,0);
+  }
+}
+
+
+.slidein-enter {
+  margin-left:100%;
+  width:300%
+}
+
+.slidein-enter.slidein-enter-active {
+  animation-duration: 0.2s;
+  animation-name: slidein;
+
+}
+
+.slidein-leave {
+  opacity: 0.5;
+}
+
+.slidein-leave.slidein-leave-active {
+  animation-duration: 0.2s;
+  animation-name: slide-out;
+}
+
+@keyframes slidein {
+  from {
+    margin-left:100%;
+    width:300%
+  }
+
+  to {
+    margin-left:0%;
+    width:100%;
+  }
+}
+
+@-webkit-keyframes slidein {
+  from {
+    margin-left:100%;
+    width:300%
+  }
+
+  to {
+    margin-left:0%;
+    width:100%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+      margin-left:0%;
+      width:100%;
+    }
+
+  to {
+    margin-left:100%;
+    width:300%
+  }
+}
+
+@-webkit-keyframes slide-out {
+  from {
+      margin-left:0%;
+      width:100%;
+    }
+
+  to {
+    margin-left:100%;
+    width:300%
+  }
 }

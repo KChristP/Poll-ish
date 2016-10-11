@@ -1,6 +1,7 @@
 import React from 'react';
 import PollItemContainer from './poll_item_container'
 import PollFormContainer from './poll_form_container'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 
 class GroupItem extends React.Component {
@@ -8,7 +9,8 @@ class GroupItem extends React.Component {
     super(props)
     this.state = {
       editInputOpen: false,
-      name: this.props.group.name
+      name: this.props.group.name,
+      showDetail: true
     };
     this.handleNameChange = this.handleNameChange.bind(this)
     this.toggleEditInput = this.toggleEditInput.bind(this)
@@ -16,6 +18,7 @@ class GroupItem extends React.Component {
     this.handleDestroyGroup = this.handleDestroyGroup.bind(this)
     this.handleDragover = this.handleDragover.bind(this)
     this.handleDrop = this.handleDrop.bind(this)
+    this.showGroupDetail = this.showGroupDetail.bind(this)
   }
 
   compontWillReceiveProps(){
@@ -32,7 +35,8 @@ class GroupItem extends React.Component {
     this.toggleEditInput()
   }
 
-  toggleEditInput(){
+  toggleEditInput(e){
+    e.preventDefault()
     this.setState(Object.assign({}, this.state, {editInputOpen: !this.state.editInputOpen}))
   }
 
@@ -44,7 +48,17 @@ class GroupItem extends React.Component {
   }
 
   handleDestroyGroup(){
-    this.props.destroyGroup(this.props.group)
+    let result = confirm("Are you sure you want to delete this group? This action will delete all polls in the group");
+    if(result === true){
+      this.props.destroyGroup(this.props.group)
+    }
+  }
+
+  showGroupDetail(e){
+    let eClass = e.target.className
+    if(eClass !== "fa fa-pencil-square-o" && eClass !== "fa-text" && eClass !== "fa fa-trash-o"){
+      this.setState(Object.assign({}, this.state, {showDetail: !this.state.showDetail}))
+    }
   }
 
   handleDragover(e){
@@ -68,9 +82,15 @@ class GroupItem extends React.Component {
   }
 
   render(){
-    let this_groups_poll_items = this.props.polls.map((poll) => (
-      <PollItemContainer poll={poll} key={poll.question.body + poll.id}/>
-    ))
+    let this_groups_poll_items;
+    if (this.state.showDetail){
+      this_groups_poll_items = this.props.polls.map((poll) => (
+        <PollItemContainer poll={poll} key={poll.question.body + poll.id}/>
+      ))
+    } else {
+      this_groups_poll_items = ""
+    }
+
     let editInput = this.state.editInputOpen ? (
       <form onSubmit={this.handleGroupEditSubmit}>
         <input type="text" value={this.state.name} onChange={this.handleNameChange}/>
@@ -79,11 +99,18 @@ class GroupItem extends React.Component {
     ) : "";
     return(
       <div className="group-item-box" onDragOver={this.handleDragover} onDrop={this.handleDrop}>
-        <div className="group-item-title">
+
+        <div className="group-item-title" onClick={this.showGroupDetail}>
+
           <div className="group-title-and-edit">
             <i className="fa fa-pencil-square-o" aria-hidden="true" onClick={this.toggleEditInput}></i>
             <div>{this.state.editInputOpen ? "" : this.props.group.name}</div>
-            {editInput}
+              <ReactCSSTransitionGroup
+                transitionName="example"
+                transitionEnterTimeout={300}
+                transitionLeaveTimeout={0}>
+                {editInput}
+              </ReactCSSTransitionGroup>
           </div>
           <div
             className="group-item-button-sub-box, group-item-button-box"
@@ -95,7 +122,13 @@ class GroupItem extends React.Component {
             <p className="fa-text">Delete Group</p>
           </div>
         </div>
-        {this_groups_poll_items}
+        <ReactCSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={100}>
+          {this_groups_poll_items}
+
+        </ReactCSSTransitionGroup>
 
         <PollFormContainer groupId={this.props.group.id}/>
       </div>

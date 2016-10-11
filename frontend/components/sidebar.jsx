@@ -2,6 +2,7 @@ import React from 'react';
 import MainPanelContainer from './main_panel_container';
 import GroupSidebarItem from './group_sidebar_item'
 import PollFormContainer from './poll_form_container'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 class Sidebar extends React.Component {
   constructor(props){
@@ -109,7 +110,12 @@ class Sidebar extends React.Component {
             className="add-group-sidebar-button">
             {this.state.addGroup ? "Cancel" : "Add Group"}
           </button>
+          <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={100}>
           {addGroupInput}
+          </ReactCSSTransitionGroup>
         </div>
         <div className="main-panel-box">
           <MainPanelContainer groups={this.state.activeGroup} key={1}/>
