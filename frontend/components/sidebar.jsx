@@ -23,9 +23,9 @@ class Sidebar extends React.Component {
     this.props.requestLive(this.props.user_id);
   }
 
-  componentWillReceiveProps(newProps){
-    this.setState({activeGroup: newProps.groups})
-  }
+  // componentWillReceiveProps(newProps){
+  //   this.props.setActiveGroup(newProps.groups)
+  // }
 
   groups_for_main_panel(){
     return this.props.groups
@@ -33,6 +33,9 @@ class Sidebar extends React.Component {
 
   changeActiveGroup(e, group){
     e.preventDefault()
+    // console.log("group before:", group);
+    // this.props.setActiveGroup(group) //oct29 - adding to global state screws up rendering of this component...
+    // console.log("group after:", group);
     let group_obj = {}
     if (group.id){
       group_obj[group.id] = group
@@ -40,26 +43,25 @@ class Sidebar extends React.Component {
       group_obj = group
     }
     let ag_object = {activeGroup: group_obj}
-    this.setState(Object.assign({}, this.state, ag_object))
+    this.props.setActiveGroup(group_obj)
   }
 
   handleGroupSubmit(e){
     e.preventDefault()
     let group = {name: this.state.groupToAdd, user_id: this.props.user_id}
     this.props.createGroup(group)
+    this.setState({groupToAdd: ""})
     this.toggleAddGroup()
   }
 
   toggleAddGroup(){
-    this.setState(Object.assign({}, this.state, {addGroup: !this.state.addGroup}))
+    this.setState({addGroup: !this.state.addGroup})
   }
 
   handleNameChange(e){
     let value = e.target.value
-    this.setState(Object.assign({}, this.state, {groupToAdd: value}))
+    this.setState({groupToAdd: value})
   }
-
-
 
   render(){
 
@@ -118,7 +120,7 @@ class Sidebar extends React.Component {
           </ReactCSSTransitionGroup>
         </div>
         <div className="main-panel-box">
-          <MainPanelContainer groups={this.state.activeGroup} key={1}/>
+          <MainPanelContainer groups={this.props.activeGroup} key={1}/>
         </div>
       </div>
     )

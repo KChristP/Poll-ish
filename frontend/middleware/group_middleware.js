@@ -4,7 +4,8 @@ import {
   receiveAllGroups,
   updateGroup,
   receiveGroup,
-  removeGroup
+  removeGroup,
+  setActiveGroup
 } from '../actions/group_actions';
 
 import {
@@ -15,7 +16,10 @@ import {
 } from '../util/group_util'
 
 export default ({getState, dispatch}) => next => action => {
-  const successIndexCallback = groups => dispatch(receiveAllGroups(groups));
+  const successIndexCallback = groups => {
+    dispatch(receiveAllGroups(groups));
+    dispatch(setActiveGroup(groups));  
+  }
   const successGroupCallback = group => {
    dispatch(receiveGroup(group));
   }

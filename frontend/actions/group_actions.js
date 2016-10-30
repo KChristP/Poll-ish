@@ -5,7 +5,8 @@ export const GroupConstants = {
   RECEIVE_GROUP: "RECEIVE_GROUP",
   CREATE_GROUP: "CREATE_GROUP",
   DESTROY_GROUP: "DESTROY_GROUP",
-  REMOVE_GROUP: "REMOVE_GROUP"
+  REMOVE_GROUP: "REMOVE_GROUP",
+  SET_ACTIVE_GROUP: "SET_ACTIVE_GROUP"
 };
 
 export const requestAllGroups = () => ({
@@ -39,5 +40,10 @@ export const destroyGroup = (group) => ({
 
 export const removeGroup = (group) => ({
   type: GroupConstants.REMOVE_GROUP,
+  group
+});
+
+export const setActiveGroup = (group) => ({
+  type: GroupConstants.SET_ACTIVE_GROUP,
   group
 });
