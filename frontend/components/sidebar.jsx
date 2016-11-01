@@ -1,6 +1,6 @@
 import React from 'react';
 import MainPanelContainer from './main_panel_container';
-import GroupSidebarItem from './group_sidebar_item'
+import GroupSidebarItemContainer from './group_sidebar_item_container'
 import PollFormContainer from './poll_form_container'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
@@ -69,7 +69,7 @@ class Sidebar extends React.Component {
     if (this.props.groups){
       let group_keys = Object.keys(this.props.groups)
       groupSidebarItems = group_keys.map((group_id) => (
-          <GroupSidebarItem
+          <GroupSidebarItemContainer
             group={this.props.groups[group_id]}
             key={group_id}
             changeActiveGroup={this.changeActiveGroup}/>
@@ -88,12 +88,13 @@ class Sidebar extends React.Component {
       </form>
     ) : "";
 
+    let selectedIndicator = Object.keys(this.props.activeGroup).length > 1 ? "sidebar-list-item selected" : "sidebar-list-item"
     let groups = this.props.groups
     let allGroups = (
       <div className="all-groups group-sidebar-item" onClick={
         (event) => (this.changeActiveGroup(event, groups))
       }>
-        <li className="sidebar-list-item">All Groups</li>
+        <li className={selectedIndicator}>All Groups</li>
       </div>
     )
 
